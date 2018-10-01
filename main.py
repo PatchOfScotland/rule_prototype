@@ -42,9 +42,11 @@ if __name__ == '__main__':
     exec(mycode)
 
     def test_func():
-        print('this is a test function')
+        exec("print('this is a test function 1')\nprint('this is a test function 2')\nprint('this is a test function 3')\nprint('this is a test function 4')")
 
     recipe = Recipe('name', 'input_file', 'output_file', test_func)
+
+    recipe.process_file()
 
     Parallel(
         meta_process_list

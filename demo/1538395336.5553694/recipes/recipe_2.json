@@ -1,0 +1,12 @@
+{
+	"name": "third_recipe",
+	"processing": "input_file = open(self.input_file, "r")
+data = input_file.read()
+input_file.close()
+data += "processed by " + self.name + "
+"
+time.sleep(variables.processing_time)
+output_file = open(self.output_file, "w")
+output_file.write(data)
+output_file.close()"
+}

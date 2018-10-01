@@ -12,9 +12,12 @@ rule_directory = our_path + '\\rules'
 data_directory = our_path + '\\data'
 
 initial_recipes_as_json = [
-    '{\n\t"name": "first_recipe",\n\t"processing": "some processing"\n}',
-    '{\n\t"name": "second_recipe",\n\t"processing": "some processing"\n}',
-    '{\n\t"name": "third_recipe",\n\t"processing": "some processing"\n}'
+    '{\n\t"name": "first_recipe",\n\t"processing": "input_file = open(self.input_file, \"r\")\ndata = input_file.read()\ninput_file.close()\ndata += \"processed by \" + self.name + \"'
+    '\n\"\ntime.sleep(variables.processing_time)\noutput_file = open(self.output_file, \"w\")\noutput_file.write(data)\noutput_file.close()"\n}',
+    '{\n\t"name": "second_recipe",\n\t"processing": "input_file = open(self.input_file, \"r\")\ndata = input_file.read()\ninput_file.close()\ndata += \"processed by \" + self.name + \"'
+    '\n\"\ntime.sleep(variables.processing_time)\noutput_file = open(self.output_file, \"w\")\noutput_file.write(data)\noutput_file.close()"\n}',
+    '{\n\t"name": "third_recipe",\n\t"processing": "input_file = open(self.input_file, \"r\")\ndata = input_file.read()\ninput_file.close()\ndata += \"processed by \" + self.name + \"'
+    '\n\"\ntime.sleep(variables.processing_time)\noutput_file = open(self.output_file, \"w\")\noutput_file.write(data)\noutput_file.close()"\n}'
 ]
 
 initial_data = [
