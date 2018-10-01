@@ -11,9 +11,20 @@ recipe_directory = our_path + '\\recipes'
 rule_directory = our_path + '\\rules'
 data_directory = our_path + '\\data'
 
-first_recipe_as_json = '{\n\t"name": "first_recipe",\n\t"processing": "some processing"\n}'
-second_recipe_as_json = '{\n\t"name": "second_recipe",\n\t"processing": "some processing"\n}'
-third_recipe_as_json = '{\n\t"name": "third_recipe",\n\t"processing": "some processing"\n}'
+initial_recipes_as_json = [
+    '{\n\t"name": "first_recipe",\n\t"processing": "some processing"\n}',
+    '{\n\t"name": "second_recipe",\n\t"processing": "some processing"\n}',
+    '{\n\t"name": "third_recipe",\n\t"processing": "some processing"\n}'
+]
+
+initial_data = [
+    'This is the initial state of the first data file.\n',
+    'This is the initial state of the second data file.\n',
+    'This is the initial state of the third data file.\n',
+    'This is the initial state of the fourth data file.\n',
+    'This is the initial state of the fifth data file.\n',
+    'This is the initial state of the sixth data file.\n'
+]
 
 actions = {
     1: 'Created',

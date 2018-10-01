@@ -15,15 +15,14 @@ if __name__ == '__main__':
     else:
         print('Path already exists, exiting')
         exit()
-    first_recipe_file = open(variables.recipe_directory + '\\first_recipe.json', 'w')
-    first_recipe_file.write(variables.first_recipe_as_json)
-    first_recipe_file.close()
-    second_recipe_file = open(variables.recipe_directory + '\\second_recipe.json', 'w')
-    second_recipe_file.write(variables.second_recipe_as_json)
-    second_recipe_file.close()
-    third_recipe_file = open(variables.recipe_directory + '\\third_recipe.json', 'w')
-    third_recipe_file.write(variables.third_recipe_as_json)
-    third_recipe_file.close()
+    for count, recipe in enumerate(variables.initial_recipes_as_json):
+        recipe_file = open(variables.recipe_directory + '\\recipe_' + str(count) + '.json', 'w')
+        recipe_file.write(recipe)
+        recipe_file.close()
+    for count, data in enumerate(variables.initial_data):
+        recipe_file = open(variables.data_directory + '\\data_' + str(count) + '.txt', 'w')
+        recipe_file.write(data)
+        recipe_file.close()
 
     rule_monitor_to_handler = Channel()
     recipe_monitor_to_handler = Channel()
@@ -43,7 +42,7 @@ if __name__ == '__main__':
     exec(mycode)
 
     def test_func():
-        print('this is a test fucntion')
+        print('this is a test function')
 
     recipe = Recipe('name', 'input_file', 'output_file', test_func)
 
