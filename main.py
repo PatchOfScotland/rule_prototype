@@ -2,7 +2,7 @@ import time
 import variables
 from structs import *
 from processes import *
-# from tasks import all_tasks
+from recipes import Recipe
 
 
 if __name__ == '__main__':
@@ -15,6 +15,15 @@ if __name__ == '__main__':
     else:
         print('Path already exists, exiting')
         exit()
+    first_recipe_file = open(variables.recipe_directory + '\\first_recipe.json', 'w')
+    first_recipe_file.write(variables.first_recipe_as_json)
+    first_recipe_file.close()
+    second_recipe_file = open(variables.recipe_directory + '\\second_recipe.json', 'w')
+    second_recipe_file.write(variables.second_recipe_as_json)
+    second_recipe_file.close()
+    third_recipe_file = open(variables.recipe_directory + '\\third_recipe.json', 'w')
+    third_recipe_file.write(variables.third_recipe_as_json)
+    third_recipe_file.close()
 
     rule_monitor_to_handler = Channel()
     recipe_monitor_to_handler = Channel()
@@ -29,9 +38,20 @@ if __name__ == '__main__':
         data_handler(data_monitor_to_handler.reader())
     ]
 
+    mycode = "print('hello world')"
+
+    exec(mycode)
+
+    def test_func():
+        print('this is a test fucntion')
+
+    recipe = Recipe('name', 'input_file', 'output_file', test_func)
+
     Parallel(
         meta_process_list
     )
+
+
     #
     # rule_one_watch_directory = '\demo\inputDirectory'
     # rule_one_write_directory = '\demo\\' + str(time_stamp) + '\pattern1_outputDirectory'
