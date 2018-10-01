@@ -2,7 +2,7 @@ import win32file
 import win32con
 import os
 import variables
-import time
+from recipes import Recipe
 from pycsp.parallel import *
 
 
@@ -66,7 +66,7 @@ from pycsp.parallel import *
 #
 
 @process
-def directory_monitor(directory_to_monitor, to_monitor_processor):
+def directory_monitor(directory_to_monitor, to_handler_processor):
 
     print('monitoring :' + directory_to_monitor)
 
@@ -81,6 +81,10 @@ def directory_monitor(directory_to_monitor, to_monitor_processor):
         win32con.FILE_FLAG_BACKUP_SEMANTICS,
         None
     )
+
+    for file in os.listdir(directory_to_monitor):
+        print('Discovered initial file and sending it on to handler: ' + file)
+        to_handler_processor((directory_to_monitor, file))
 
     while True:
         results = win32file.ReadDirectoryChangesW(
@@ -98,8 +102,8 @@ def directory_monitor(directory_to_monitor, to_monitor_processor):
         )
         for action, file in results:
             if action in variables.actions:
-                print('Seen an event and sending it on to the monitor ' + file)
-                to_monitor_processor('Some placeholder')
+                print('Seen an event and sending it on to the handler: ' + file)
+                to_handler_processor((directory_to_monitor, file))
 #                rule_monitor_to_scheduler(rule.task.create_process(file, path_to_watch, path_to_write))
 
 
@@ -107,21 +111,36 @@ def directory_monitor(directory_to_monitor, to_monitor_processor):
 def data_handler(from_directory_monitor):
     while True:
         data_input = from_directory_monitor()
-        print('data monitor received input: ' + data_input)
+        print('data handler received input: ' + data_input[1])
 
 
 @process
 def rule_handler(from_directory_monitor):
     while True:
         rule_input = from_directory_monitor()
-        print('data monitor received input: ' + rule_input)
+        print('rule handler received input: ' + rule_input[1])
 
 
 @process
 def recipe_handler(from_directory_monitor):
+    all_recipes = {}
     while True:
-        rule_input = from_directory_monitor()
-        print('data monitor received input: ' + rule_input)
+        recipe_input = from_directory_monitor()
+        print('recipe handler received input: ' + recipe_input[1])
+        complete_process = ''
+        with open(recipe_input[0] + '\\' + recipe_input[1]) as input_file:
+            for line in input_file:
+                complete_process += line
+        try:
+            recipe = Recipe(recipe_input, complete_process)
+            if recipe.name not in all_recipes:
+                print('Creating new recipe')
+                all_recipes[recipe.name] = recipe
+            else:
+                print('Replacing existing recipe')
+                all_recipes[recipe.name] = recipe
+        except:
+            print('Something went wrong with parsing the recipe')
 
 
 

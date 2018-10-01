@@ -5,7 +5,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4e46ec3-2306-4b0a-819d-5e3b83c04d0e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/demo/1538394020.1250293/recipes/recipe0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394020.1250293/recipes/recipe1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394020.1250293/recipes/recipe2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/data/data_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/data/data_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/data/data_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/data/data_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/data/data_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/data/data_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/recipes/recipe_0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/recipes/recipe_1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/recipes/recipe_2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/data/data_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/data/data_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/data/data_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/data/data_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/data/data_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/data/data_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/recipes/recipe_0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/recipes/recipe_1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/recipes/recipe_2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/data/data_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/data/data_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/data/data_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/data/data_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/data/data_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/data/data_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/recipes/recipe_0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/recipes/recipe_1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/recipes/recipe_2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/data/data_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/data/data_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/data/data_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/data/data_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/data/data_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/data/data_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/recipes/recipe_0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/recipes/recipe_1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/recipes/recipe_2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/data/data_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/data/data_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/data/data_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/data/data_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/data/data_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/data/data_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/recipes/recipe_0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/recipes/recipe_1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/recipes/recipe_2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/data/data_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/data/data_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/data/data_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/data/data_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/data/data_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/data/data_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/recipes/recipe_0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/recipes/recipe_1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/recipes/recipe_2.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processes.py" beforeDir="false" afterPath="$PROJECT_DIR$/processes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recipes.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/variables.py" beforeDir="false" afterPath="$PROJECT_DIR$/variables.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,13 +101,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="14" />
-          <entry key="py" value="13914" />
+          <entry key="py" value="14764" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="14" />
-          <entry key="Python" value="13914" />
+          <entry key="Python" value="14764" />
         </counts>
       </usages-collector>
     </session>
@@ -58,21 +117,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="44" column="122" selection-start-line="44" selection-start-column="122" selection-end-line="44" selection-end-column="122" />
+            <state relative-caret-position="306">
+              <caret line="18" column="88" selection-start-line="18" selection-start-column="88" selection-end-line="18" selection-end-column="88" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1538394655952" expanded="true" signature="1564:1729" ph="..." />
+                <marker date="1538398334664" expanded="true" signature="1608:1780" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/variables.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+            <state relative-caret-position="640">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -89,14 +148,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/processes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+            <state relative-caret-position="867">
+              <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <marker date="1538391101771" expanded="true" signature="150:321" ph="..." />
+                <marker date="1538398648647" expanded="true" signature="165:336" ph="..." />
               </folding>
             </state>
           </provider>
@@ -114,12 +173,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/recipes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="20" selection-end-column="29" />
+            <state relative-caret-position="102">
+              <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
               <folding>
                 <element signature="e#1#12#0" expanded="true" />
-                <marker date="1538393395455" expanded="true" signature="44:258" ph="..." />
-                <marker date="1538393395455" expanded="true" signature="619:620" ph="..." />
+                <marker date="1538397015874" expanded="true" signature="44:157" ph="..." />
+                <marker date="1538397015874" expanded="true" signature="518:519" ph="..." />
               </folding>
             </state>
           </provider>
@@ -147,10 +206,10 @@
         <option value="$PROJECT_DIR$/patterns.py" />
         <option value="$PROJECT_DIR$/structs.py" />
         <option value="$PROJECT_DIR$/tasks.py" />
-        <option value="$PROJECT_DIR$/processes.py" />
         <option value="$PROJECT_DIR$/recipes.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/variables.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/processes.py" />
       </list>
     </option>
   </component>
@@ -272,12 +331,12 @@
     <frame x="1912" y="-374" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18496802" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.119936034" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32939914" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49959514" visible="true" weight="0.13090129" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49959514" visible="true" weight="0.18884121" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39806867" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -293,13 +352,13 @@
       <window_info anchor="right" id="R Packages" order="4" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18496802" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18496802" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32939914" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49959514" visible="true" weight="0.21995708" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3986068" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49959514" visible="true" weight="0.18884121" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39806867" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -343,13 +402,6 @@
     <entry file="file://$PROJECT_DIR$/../../Scripts/backupToIDMC.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/patterns.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/structs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -357,46 +409,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processes.py">
+    <entry file="file://$PROJECT_DIR$/patterns.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-            <marker date="1538391101771" expanded="true" signature="150:321" ph="..." />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/recipes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="20" selection-end-column="29" />
+        <state relative-caret-position="102">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
           <folding>
             <element signature="e#1#12#0" expanded="true" />
-            <marker date="1538393395455" expanded="true" signature="44:258" ph="..." />
-            <marker date="1538393395455" expanded="true" signature="619:620" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="44" column="122" selection-start-line="44" selection-start-column="122" selection-end-line="44" selection-end-column="122" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <marker date="1538394655952" expanded="true" signature="1564:1729" ph="..." />
+            <marker date="1538397015874" expanded="true" signature="44:157" ph="..." />
+            <marker date="1538397015874" expanded="true" signature="518:519" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/variables.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+        <state relative-caret-position="640">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="88" selection-start-line="18" selection-start-column="88" selection-end-line="18" selection-end-column="88" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <marker date="1538398334664" expanded="true" signature="1608:1780" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+            <marker date="1538398648647" expanded="true" signature="165:336" ph="..." />
           </folding>
         </state>
       </provider>

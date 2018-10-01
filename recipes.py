@@ -3,10 +3,8 @@ import variables
 
 
 class Recipe:
-    def __init__(self, name, input_file, output_file, process_file):
+    def __init__(self, name, process_file):
         self.name = name
-        self.input_file = input_file
-        self.output_file = output_file
         self.process_file = process_file
 
 

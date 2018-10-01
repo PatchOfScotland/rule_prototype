@@ -15,9 +15,10 @@ if __name__ == '__main__':
     else:
         print('Path already exists, exiting')
         exit()
-    for count, recipe in enumerate(variables.initial_recipes_as_json):
-        recipe_file = open(variables.recipe_directory + '\\recipe_' + str(count) + '.json', 'w')
-        recipe_file.write(recipe)
+    for count, recipe in enumerate(variables.initial_recipes):
+        recipe_file = open(variables.recipe_directory + '\\recipe_' + str(count) + '.txt', 'w')
+        for line in recipe:
+            recipe_file.write(line + '\n')
         recipe_file.close()
     for count, data in enumerate(variables.initial_data):
         recipe_file = open(variables.data_directory + '\\data_' + str(count) + '.txt', 'w')
@@ -37,16 +38,16 @@ if __name__ == '__main__':
         data_handler(data_monitor_to_handler.reader())
     ]
 
-    mycode = "print('hello world')"
-
-    exec(mycode)
-
-    def test_func():
-        exec("print('this is a test function 1')\nprint('this is a test function 2')\nprint('this is a test function 3')\nprint('this is a test function 4')")
-
-    recipe = Recipe('name', 'input_file', 'output_file', test_func)
-
-    recipe.process_file()
+    # mycode = "print('hello world')"
+    #
+    # exec(mycode)
+    #
+    # def test_func():
+    #     exec("print('this is a test function 1')\nprint('this is a test function 2')\nprint('this is a test function 3')\nprint('this is a test function 4')")
+    #
+    # recipe = Recipe('name', 'input_file', 'output_file', test_func)
+    #
+    # recipe.process_file()
 
     Parallel(
         meta_process_list
