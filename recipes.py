@@ -1,6 +1,3 @@
-import time
-import variables
-
 
 class Recipe:
     def __init__(self, name, process_file):

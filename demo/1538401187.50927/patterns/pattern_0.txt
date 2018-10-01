@@ -1,1 +1,0 @@
-('recipe_0', 'C:\\Users\\dmarc\\Documents\\Code\\RulePrototype\\demo\\1538401187.50927\\data\\initial_data', 'C:\\Users\\dmarc\\Documents\\Code\\RulePrototype\\demo\\1538401187.50927\\data\\pattern_1_output')

@@ -66,6 +66,7 @@ from pycsp.parallel import *
 #                     pre_conditions[x] = False
 #
 
+
 @process
 def directory_monitor(directory_to_monitor, to_handler_processor):
 
@@ -109,18 +110,18 @@ def directory_monitor(directory_to_monitor, to_handler_processor):
 
 
 @process
-def data_handler(from_directory_monitor):
+def data_handler(from_directory_monitor, to_scheduler):
     while True:
         data_input = from_directory_monitor()
-        print('data handler received input: ' + data_input[1])
+        print('Data handler received input: ' + data_input[1])
 
 
 @process
-def pattern_handler(from_directory_monitor):
+def pattern_handler(from_directory_monitor, to_scheduler):
     all_patterns = {}
     while True:
         pattern_input = from_directory_monitor()
-        print('pattern handler received input: ' + pattern_input[1])
+        print('Pattern handler received input: ' + pattern_input[1])
         with open(pattern_input[0] + '\\' + pattern_input[1]) as input_file:
             pattern = input_file.read()
         try:
@@ -136,13 +137,12 @@ def pattern_handler(from_directory_monitor):
             print('Something went wrong with parsing the pattern')
 
 
-
 @process
-def recipe_handler(from_directory_monitor):
+def recipe_handler(from_directory_monitor, to_scheduler):
     all_recipes = {}
     while True:
         recipe_input = from_directory_monitor()
-        print('recipe handler received input: ' + recipe_input[1])
+        print('Recipe handler received input: ' + recipe_input[1])
         complete_process = ''
         with open(recipe_input[0] + '\\' + recipe_input[1]) as input_file:
             for line in input_file:
@@ -157,6 +157,13 @@ def recipe_handler(from_directory_monitor):
                 all_recipes[recipe.name] = recipe
         except:
             print('Something went wrong with parsing the recipe')
+
+
+# TODO take input from the handlers and maintain a dictionary of patterns and recipes, and to schedule new processes with data once they are added or updated. The dictionaries in the relevant
+# handlers should also be removed as otherwise its just replicating data. Possibly the handlers in their entirety could be removed as I'm not sure if they're adding anything individually.
+@process
+def scheduler(from_data_handler, from_pattern_handler, from_recipe_handler):
+    pass
 
 
 #

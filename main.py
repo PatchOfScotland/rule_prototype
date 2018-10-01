@@ -1,9 +1,4 @@
-import time
-import variables
-from structs import *
 from processes import *
-from recipes import Recipe
-
 
 if __name__ == '__main__':
     print('timestamp for this run: ' + str(variables.time_stamp))
@@ -28,6 +23,8 @@ if __name__ == '__main__':
         pattern_file = open(variables.pattern_directory + '\\pattern_' + str(count) + '.txt', 'w')
         pattern_file.write(str(pattern))
         pattern_file.close()
+
+    print('Initial setup complete')
 
     pattern_monitor_to_handler = Channel()
     recipe_monitor_to_handler = Channel()

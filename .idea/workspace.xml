@@ -1,15 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/main.py" line="7" />
+    <bookmark url="file://$PROJECT_DIR$/main.py" line="2" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4e46ec3-2306-4b0a-819d-5e3b83c04d0e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538398651.006861/data/data_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538398651.006861/data/data_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538398651.006861/data/data_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538398651.006861/data/data_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538398651.006861/data/data_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538398651.006861/data/data_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538398651.006861/recipes/recipe_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538398651.006861/recipes/recipe_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538398651.006861/recipes/recipe_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538399718.2402008/data/data_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538399718.2402008/data/data_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538399718.2402008/data/data_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538399718.2402008/data/data_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538399718.2402008/data/data_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538399718.2402008/data/data_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538399718.2402008/recipes/recipe_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538399718.2402008/recipes/recipe_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538399718.2402008/recipes/recipe_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400609.11095/recipes/recipe_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400609.11095/recipes/recipe_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400609.11095/recipes/recipe_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400630.259395/data/initial_data/data_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400630.259395/data/initial_data/data_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400630.259395/data/initial_data/data_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400630.259395/data/initial_data/data_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400630.259395/data/initial_data/data_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400630.259395/data/initial_data/data_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400630.259395/patterns/pattern_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400630.259395/recipes/recipe_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400630.259395/recipes/recipe_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400630.259395/recipes/recipe_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400642.3398376/data/initial_data/data_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400642.3398376/data/initial_data/data_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400642.3398376/data/initial_data/data_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400642.3398376/data/initial_data/data_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400642.3398376/data/initial_data/data_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400642.3398376/data/initial_data/data_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400642.3398376/patterns/pattern_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400642.3398376/patterns/pattern_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400642.3398376/patterns/pattern_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400642.3398376/recipes/recipe_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400642.3398376/recipes/recipe_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538400642.3398376/recipes/recipe_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401154.1409273/data/initial_data/data_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401154.1409273/data/initial_data/data_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401154.1409273/data/initial_data/data_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401154.1409273/data/initial_data/data_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401154.1409273/data/initial_data/data_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401154.1409273/data/initial_data/data_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401154.1409273/patterns/pattern_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401154.1409273/patterns/pattern_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401154.1409273/patterns/pattern_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401154.1409273/recipes/recipe_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401154.1409273/recipes/recipe_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401154.1409273/recipes/recipe_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401187.50927/data/initial_data/data_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401187.50927/data/initial_data/data_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401187.50927/data/initial_data/data_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401187.50927/data/initial_data/data_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401187.50927/data/initial_data/data_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401187.50927/data/initial_data/data_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401187.50927/patterns/pattern_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401187.50927/patterns/pattern_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401187.50927/patterns/pattern_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401187.50927/recipes/recipe_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401187.50927/recipes/recipe_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401187.50927/recipes/recipe_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401300.308117/data/initial_data/data_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401300.308117/data/initial_data/data_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401300.308117/data/initial_data/data_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401300.308117/data/initial_data/data_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401300.308117/data/initial_data/data_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401300.308117/data/initial_data/data_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401300.308117/patterns/pattern_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401300.308117/patterns/pattern_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401300.308117/patterns/pattern_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401300.308117/recipes/recipe_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401300.308117/recipes/recipe_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401300.308117/recipes/recipe_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401530.4866526/data/initial_data/data_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401530.4866526/data/initial_data/data_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401530.4866526/data/initial_data/data_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401530.4866526/data/initial_data/data_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401530.4866526/data/initial_data/data_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401530.4866526/data/initial_data/data_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401530.4866526/patterns/pattern_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401530.4866526/patterns/pattern_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401530.4866526/patterns/pattern_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401530.4866526/recipes/recipe_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401530.4866526/recipes/recipe_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401530.4866526/recipes/recipe_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401542.4422014/data/initial_data/data_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401542.4422014/data/initial_data/data_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401542.4422014/data/initial_data/data_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401542.4422014/data/initial_data/data_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401542.4422014/data/initial_data/data_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401542.4422014/data/initial_data/data_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401542.4422014/patterns/pattern_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401542.4422014/patterns/pattern_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401542.4422014/patterns/pattern_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401542.4422014/recipes/recipe_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401542.4422014/recipes/recipe_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401542.4422014/recipes/recipe_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401547.8294559/data/initial_data/data_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401547.8294559/data/initial_data/data_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401547.8294559/data/initial_data/data_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401547.8294559/data/initial_data/data_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401547.8294559/data/initial_data/data_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401547.8294559/data/initial_data/data_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401547.8294559/patterns/pattern_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401547.8294559/patterns/pattern_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401547.8294559/patterns/pattern_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401547.8294559/recipes/recipe_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401547.8294559/recipes/recipe_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/1538401547.8294559/recipes/recipe_2.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patterns.py" beforeDir="false" afterPath="$PROJECT_DIR$/patterns.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/processes.py" beforeDir="false" afterPath="$PROJECT_DIR$/processes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/variables.py" beforeDir="false" afterPath="$PROJECT_DIR$/variables.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recipes.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipes.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +134,7 @@
     <session id="2081229768">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
+          <entry key="project.closed" value="12" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.2" value="1" />
@@ -45,13 +158,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="25" />
-          <entry key="py" value="15590" />
+          <entry key="py" value="16152" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="25" />
-          <entry key="Python" value="15590" />
+          <entry key="Python" value="16152" />
         </counts>
       </usages-collector>
     </session>
@@ -61,11 +174,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="38" column="65" selection-start-line="38" selection-start-column="65" selection-end-line="38" selection-end-column="65" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="408">
+              <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -73,8 +183,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/variables.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="60" column="1" lean-forward="true" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
+            <state relative-caret-position="136">
+              <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -86,7 +196,7 @@
         <entry file="file://$PROJECT_DIR$/patterns.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
               <folding>
                 <marker date="1538401458261" expanded="true" signature="15:20" ph="..." />
                 <marker date="1538401458261" expanded="true" signature="240:241" ph="..." />
@@ -99,11 +209,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/processes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="139" column="28" lean-forward="true" selection-start-line="139" selection-start-column="28" selection-end-line="139" selection-end-column="28" />
+            <state relative-caret-position="96">
+              <caret line="131" column="66" lean-forward="true" selection-start-line="131" selection-start-column="66" selection-end-line="131" selection-end-column="66" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <marker date="1538401527949" expanded="true" signature="194:365" ph="..." />
+                <marker date="1538402772912" expanded="true" signature="194:365" ph="..." />
+                <marker date="1538402772912" expanded="true" signature="6131:6143" ph="..." />
               </folding>
             </state>
           </provider>
@@ -112,8 +223,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/structs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="36" selection-end-column="100" />
+            <state relative-caret-position="170">
+              <caret line="10" column="28" lean-forward="true" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -121,12 +232,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/recipes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-176">
-              <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+            <state>
               <folding>
-                <element signature="e#1#12#0" expanded="true" />
-                <marker date="1538397015874" expanded="true" signature="44:157" ph="..." />
-                <marker date="1538397015874" expanded="true" signature="518:519" ph="..." />
+                <marker date="1538402320012" expanded="true" signature="14:127" ph="..." />
+                <marker date="1538402320012" expanded="true" signature="488:489" ph="..." />
               </folding>
             </state>
           </provider>
@@ -153,10 +262,10 @@
         <option value="$PROJECT_DIR$/demo/tasks.py" />
         <option value="$PROJECT_DIR$/structs.py" />
         <option value="$PROJECT_DIR$/tasks.py" />
-        <option value="$PROJECT_DIR$/recipes.py" />
         <option value="$PROJECT_DIR$/variables.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/patterns.py" />
+        <option value="$PROJECT_DIR$/recipes.py" />
+        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/processes.py" />
       </list>
     </option>
@@ -277,14 +386,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-374" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.119936034" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32939914" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49959514" visible="true" weight="0.18884121" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49959514" weight="0.18884121" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39806867" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -352,47 +460,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/recipes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-176">
-          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        <state>
           <folding>
-            <element signature="e#1#12#0" expanded="true" />
-            <marker date="1538397015874" expanded="true" signature="44:157" ph="..." />
-            <marker date="1538397015874" expanded="true" signature="518:519" ph="..." />
+            <marker date="1538402320012" expanded="true" signature="14:127" ph="..." />
+            <marker date="1538402320012" expanded="true" signature="488:489" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/structs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="36" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="38" column="65" selection-start-line="38" selection-start-column="65" selection-end-line="38" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/variables.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="60" column="1" lean-forward="true" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="170">
+          <caret line="10" column="28" lean-forward="true" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/patterns.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
           <folding>
             <marker date="1538401458261" expanded="true" signature="15:20" ph="..." />
             <marker date="1538401458261" expanded="true" signature="240:241" ph="..." />
@@ -401,13 +487,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/variables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/processes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="139" column="28" lean-forward="true" selection-start-line="139" selection-start-column="28" selection-end-line="139" selection-end-column="28" />
+        <state relative-caret-position="96">
+          <caret line="131" column="66" lean-forward="true" selection-start-line="131" selection-start-column="66" selection-end-line="131" selection-end-column="66" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
-            <marker date="1538401527949" expanded="true" signature="194:365" ph="..." />
+            <marker date="1538402772912" expanded="true" signature="194:365" ph="..." />
+            <marker date="1538402772912" expanded="true" signature="6131:6143" ph="..." />
           </folding>
         </state>
       </provider>
