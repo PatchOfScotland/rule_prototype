@@ -5,67 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4e46ec3-2306-4b0a-819d-5e3b83c04d0e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/demo/1538394020.1250293/recipes/recipe0.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394020.1250293/recipes/recipe1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394020.1250293/recipes/recipe2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/data/data_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/data/data_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/data/data_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/data/data_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/data/data_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/data/data_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/recipes/recipe_0.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/recipes/recipe_1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394174.5290618/recipes/recipe_2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/data/data_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/data/data_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/data/data_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/data/data_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/data/data_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/data/data_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/recipes/recipe_0.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/recipes/recipe_1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394577.3359582/recipes/recipe_2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/data/data_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/data/data_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/data/data_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/data/data_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/data/data_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/data/data_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/recipes/recipe_0.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/recipes/recipe_1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394592.9300277/recipes/recipe_2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/data/data_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/data/data_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/data/data_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/data/data_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/data/data_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/data/data_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/recipes/recipe_0.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/recipes/recipe_1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394641.5413475/recipes/recipe_2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/data/data_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/data/data_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/data/data_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/data/data_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/data/data_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/data/data_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/recipes/recipe_0.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/recipes/recipe_1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538394656.017453/recipes/recipe_2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/data/data_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/data/data_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/data/data_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/data/data_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/data/data_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/data/data_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/recipes/recipe_0.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/recipes/recipe_1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/1538395336.5553694/recipes/recipe_2.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/processes.py" beforeDir="false" afterPath="$PROJECT_DIR$/processes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipes.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/variables.py" beforeDir="false" afterPath="$PROJECT_DIR$/variables.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -114,14 +55,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="88" selection-start-line="18" selection-start-column="88" selection-end-line="18" selection-end-column="88" />
+            <state relative-caret-position="289">
+              <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1538398334664" expanded="true" signature="1608:1780" ph="..." />
               </folding>
             </state>
           </provider>
@@ -148,14 +88,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/processes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
+            <state relative-caret-position="1938">
+              <caret line="144" selection-start-line="144" selection-end-line="144" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <marker date="1538398648647" expanded="true" signature="165:336" ph="..." />
+                <marker date="1538399109745" expanded="true" signature="165:336" ph="..." />
               </folding>
             </state>
           </provider>
@@ -208,8 +148,8 @@
         <option value="$PROJECT_DIR$/tasks.py" />
         <option value="$PROJECT_DIR$/recipes.py" />
         <option value="$PROJECT_DIR$/variables.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/processes.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -438,24 +378,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/processes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="88" selection-start-line="18" selection-start-column="88" selection-end-line="18" selection-end-column="88" />
+        <state relative-caret-position="1938">
+          <caret line="144" selection-start-line="144" selection-end-line="144" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <marker date="1538398334664" expanded="true" signature="1608:1780" ph="..." />
+            <element signature="e#0#16#0" expanded="true" />
+            <marker date="1538399109745" expanded="true" signature="165:336" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processes.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
+        <state relative-caret-position="289">
+          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
           <folding>
-            <element signature="e#0#16#0" expanded="true" />
-            <marker date="1538398648647" expanded="true" signature="165:336" ph="..." />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>

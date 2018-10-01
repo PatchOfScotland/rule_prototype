@@ -38,17 +38,6 @@ if __name__ == '__main__':
         data_handler(data_monitor_to_handler.reader())
     ]
 
-    # mycode = "print('hello world')"
-    #
-    # exec(mycode)
-    #
-    # def test_func():
-    #     exec("print('this is a test function 1')\nprint('this is a test function 2')\nprint('this is a test function 3')\nprint('this is a test function 4')")
-    #
-    # recipe = Recipe('name', 'input_file', 'output_file', test_func)
-    #
-    # recipe.process_file()
-
     Parallel(
         meta_process_list
     )

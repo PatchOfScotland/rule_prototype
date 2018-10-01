@@ -143,7 +143,6 @@ def recipe_handler(from_directory_monitor):
             print('Something went wrong with parsing the recipe')
 
 
-
 #
 # @process
 # def rule_monitor(
