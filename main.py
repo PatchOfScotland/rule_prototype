@@ -9,9 +9,9 @@ if __name__ == '__main__':
     print('timestamp for this run: ' + str(variables.time_stamp))
 
     if not os.path.exists(variables.our_path):
-        os.makedirs(variables.data_directory)
+        os.makedirs(variables.initial_data_directory)
         os.makedirs(variables.recipe_directory)
-        os.makedirs(variables.rule_directory)
+        os.makedirs(variables.pattern_directory)
     else:
         print('Path already exists, exiting')
         exit()
@@ -21,17 +21,21 @@ if __name__ == '__main__':
             recipe_file.write(line + '\n')
         recipe_file.close()
     for count, data in enumerate(variables.initial_data):
-        recipe_file = open(variables.data_directory + '\\data_' + str(count) + '.txt', 'w')
-        recipe_file.write(data)
-        recipe_file.close()
+        data_file = open(variables.initial_data_directory + '\\data_' + str(count) + '.txt', 'w')
+        data_file.write(data)
+        data_file.close()
+    for count, pattern in enumerate(variables.initial_patterns):
+        pattern_file = open(variables.pattern_directory + '\\pattern_' + str(count) + '.txt', 'w')
+        pattern_file.write(str(pattern))
+        pattern_file.close()
 
-    rule_monitor_to_handler = Channel()
+    pattern_monitor_to_handler = Channel()
     recipe_monitor_to_handler = Channel()
     data_monitor_to_handler = Channel()
 
     meta_process_list = [
-        directory_monitor(variables.rule_directory, rule_monitor_to_handler.writer()),
-        rule_handler(rule_monitor_to_handler.reader()),
+        directory_monitor(variables.pattern_directory, pattern_monitor_to_handler.writer()),
+        pattern_handler(pattern_monitor_to_handler.reader()),
         directory_monitor(variables.recipe_directory, recipe_monitor_to_handler.writer()),
         recipe_handler(recipe_monitor_to_handler.reader()),
         directory_monitor(variables.data_directory, data_monitor_to_handler.writer()),

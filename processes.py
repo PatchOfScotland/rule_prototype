@@ -3,6 +3,7 @@ import win32con
 import os
 import variables
 from recipes import Recipe
+from patterns import Pattern
 from pycsp.parallel import *
 
 
@@ -115,10 +116,25 @@ def data_handler(from_directory_monitor):
 
 
 @process
-def rule_handler(from_directory_monitor):
+def pattern_handler(from_directory_monitor):
+    all_patterns = {}
     while True:
-        rule_input = from_directory_monitor()
-        print('rule handler received input: ' + rule_input[1])
+        pattern_input = from_directory_monitor()
+        print('pattern handler received input: ' + pattern_input[1])
+        with open(pattern_input[0] + '\\' + pattern_input[1]) as input_file:
+            pattern = input_file.read()
+        try:
+            pattern_as_tuple = eval(pattern)
+            pattern = Pattern(pattern_as_tuple[0], pattern_as_tuple[1], pattern_as_tuple[2])
+            if pattern.get_pattern_name() not in all_patterns:
+                print('Creating new pattern')
+                all_patterns[pattern.get_pattern_name()] = pattern
+            else:
+                print('Replacing existing pattern')
+                all_patterns[pattern.get_pattern_name()] = pattern
+        except:
+            print('Something went wrong with parsing the pattern')
+
 
 
 @process

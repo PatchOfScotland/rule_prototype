@@ -8,8 +8,9 @@ processing_time = 1
 time_stamp = time.time()
 our_path = os.path.abspath('.') + '\\demo\\' + str(time_stamp)
 recipe_directory = our_path + '\\recipes'
-rule_directory = our_path + '\\rules'
+pattern_directory = our_path + '\\patterns'
 data_directory = our_path + '\\data'
+initial_data_directory = data_directory + '\\initial_data'
 
 initial_recipes = [
     [
@@ -51,6 +52,12 @@ initial_data = [
     'This is the initial state of the fourth data file.\n',
     'This is the initial state of the fifth data file.\n',
     'This is the initial state of the sixth data file.\n'
+]
+
+initial_patterns = [
+    ('recipe_0', initial_data_directory, data_directory + '\\pattern_1_output'),
+    ('recipe_1', initial_data_directory, data_directory + '\\pattern_2_output'),
+    ('recipe_2', data_directory + '\\pattern_2_output', data_directory + '\\pattern_3_output'),
 ]
 
 actions = {
