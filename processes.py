@@ -66,6 +66,43 @@ def scheduler(from_monitor, from_resources, to_resources):
 
 
 @process
+def directory_monitor(directory_to_monitor, to_monitor_processor):
+
+    file_list_directory = 0x0001
+
+    handle = win32file.CreateFile(
+        directory_to_monitor,
+        file_list_directory,
+        win32con.FILE_SHARE_READ | win32con.FILE_SHARE_WRITE | win32con.FILE_SHARE_DELETE,
+        None,
+        win32con.OPEN_EXISTING,
+        win32con.FILE_FLAG_BACKUP_SEMANTICS,
+        None
+    )
+
+    while True:
+        results = win32file.ReadDirectoryChangesW(
+            handle,
+            1024,
+            True,
+            win32con.FILE_NOTIFY_CHANGE_FILE_NAME |
+            win32con.FILE_NOTIFY_CHANGE_DIR_NAME |
+            win32con.FILE_NOTIFY_CHANGE_ATTRIBUTES |
+            win32con.FILE_NOTIFY_CHANGE_SIZE |
+            win32con.FILE_NOTIFY_CHANGE_LAST_WRITE |
+            win32con.FILE_NOTIFY_CHANGE_SECURITY,
+            None,
+            None
+        )
+        for action, file in results:
+            if action in variables.actions:
+                print('Seen an event and sending it on to the monitor ' + file)
+                to_monitor_processor('Some placeholder')
+#                rule_monitor_to_scheduler(rule.task.create_process(file, path_to_watch, path_to_write))
+
+
+
+@process
 def rule_monitor(
         rule,
         repeat_on_rule_change,
