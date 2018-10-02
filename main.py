@@ -27,17 +27,40 @@ if __name__ == '__main__':
     print('Initial setup complete')
 
     pattern_monitor_to_handler = Channel()
+    pattern_handler_to_task_generator = Channel()
     recipe_monitor_to_handler = Channel()
+    recipe_handler_to_task_generator = Channel()
     data_monitor_to_handler = Channel()
+    data_handler_to_task_generator = Channel()
+    task_generator_to_scheduler = Channel()
 
     meta_process_list = [
         directory_monitor(variables.pattern_directory, pattern_monitor_to_handler.writer()),
-        pattern_handler(pattern_monitor_to_handler.reader()),
+        pattern_handler(pattern_monitor_to_handler.reader(), pattern_handler_to_task_generator.writer()),
         directory_monitor(variables.recipe_directory, recipe_monitor_to_handler.writer()),
-        recipe_handler(recipe_monitor_to_handler.reader()),
+        recipe_handler(recipe_monitor_to_handler.reader(), recipe_handler_to_task_generator.writer()),
         directory_monitor(variables.data_directory, data_monitor_to_handler.writer()),
-        data_handler(data_monitor_to_handler.reader())
+        data_handler(data_monitor_to_handler.reader(), data_handler_to_task_generator.writer()),
+        task_generator(data_handler_to_task_generator.reader(), pattern_handler_to_task_generator.reader(), recipe_handler_to_task_generator.reader(), task_generator_to_scheduler.writer()),
     ]
+
+    # sort out the scheduler and resources. Probably a neater way to do this but it works
+    resources_to_scheduler_channels = []
+    scheduler_to_resources_channels = []
+    for x in range(variables.number_of_resources):
+        resource_to_scheduler_channel = Channel()
+        resources_to_scheduler_channels.append(resource_to_scheduler_channel)
+        scheduler_to_resource_channel = Channel()
+        scheduler_to_resources_channels.append(scheduler_to_resource_channel)
+        meta_process_list.append(resource(resource_to_scheduler_channel.writer(), scheduler_to_resource_channel.reader()))
+    from_resource_readers = []
+    for from_resource_reader in resources_to_scheduler_channels:
+        from_resource_readers.append(from_resource_reader.reader())
+    to_resource_writers = []
+    for to_resource_writer in scheduler_to_resources_channels:
+        to_resource_writers.append(to_resource_writer.writer())
+
+    meta_process_list.append(scheduler(task_generator_to_scheduler.reader(), from_resource_readers, to_resource_writers))
 
     Parallel(
         meta_process_list

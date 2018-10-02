@@ -13,58 +13,6 @@ from pycsp.parallel import *
 #     print('Rule changer sending interruption')
 #     to_rule_monitor(0)
 #     print('Rule changer sent interruption')
-#
-#
-# @process
-# def resource(to_scheduler, from_scheduler):
-#     while True:
-#         to_scheduler(0)
-#         input_process = from_scheduler()
-#         input_process.process_file()
-#
-#
-# @process
-# def scheduler(from_monitor, from_resources, to_resources):
-#     buffer = []
-#     pre_conditions = [False] * len(from_resources)
-#     # This is for the monitor, should always be True
-#     pre_conditions.append(True)
-#     input_guards = []
-#     for from_resource in from_resources:
-#         input_guards.append(InputGuard(from_resource))
-#     input_guards.append(InputGuard(from_monitor))
-#     while True:
-#         pre_conditioned = []
-#         for i, guard in enumerate(input_guards):
-#             if pre_conditions[i]:
-#                 pre_conditioned.append(guard)
-#         channel_index, message = PriSelect(
-#             pre_conditioned
-#         )
-#         if channel_index == from_monitor:
-#             replace_previous_entry = False
-#             # If there is already a scheduled process identical to this, then replace that one
-#             for index, element in enumerate(buffer):
-#                 if element.get_process_name() == message.get_process_name():
-#                     buffer[index] = message
-#                     replace_previous_entry = True
-#             if not replace_previous_entry:
-#                 buffer.append(message)
-#             for x in range(len(from_resources)):
-#                 pre_conditions[x] = True
-#         # Input message came from a resource looking for a process. Can ignore empty input
-#         else:
-#             i = -1
-#             for a in range(len(from_resources)):
-#                 if from_resources[a] == channel_index:
-#                     i = a
-#
-#             to_resources[i](buffer[0])
-#             del buffer[0]
-#             if len(buffer) == 0:
-#                 for x in range(len(from_resources)):
-#                     pre_conditions[x] = False
-#
 
 
 @process
@@ -110,15 +58,16 @@ def directory_monitor(directory_to_monitor, to_handler_processor):
 
 
 @process
-def data_handler(from_directory_monitor, to_scheduler):
+def data_handler(from_directory_monitor, to_task_generator):
     while True:
         data_input = from_directory_monitor()
         print('Data handler received input: ' + data_input[1])
+        to_task_generator(data_input)
+
 
 
 @process
-def pattern_handler(from_directory_monitor, to_scheduler):
-    all_patterns = {}
+def pattern_handler(from_directory_monitor, to_task_generator):
     while True:
         pattern_input = from_directory_monitor()
         print('Pattern handler received input: ' + pattern_input[1])
@@ -127,19 +76,13 @@ def pattern_handler(from_directory_monitor, to_scheduler):
         try:
             pattern_as_tuple = eval(pattern)
             pattern = Pattern(pattern_as_tuple[0], pattern_as_tuple[1], pattern_as_tuple[2])
-            if pattern.get_pattern_name() not in all_patterns:
-                print('Creating new pattern')
-                all_patterns[pattern.get_pattern_name()] = pattern
-            else:
-                print('Replacing existing pattern')
-                all_patterns[pattern.get_pattern_name()] = pattern
+            to_task_generator(pattern)
         except:
             print('Something went wrong with parsing the pattern')
 
 
 @process
-def recipe_handler(from_directory_monitor, to_scheduler):
-    all_recipes = {}
+def recipe_handler(from_directory_monitor, to_task_generator):
     while True:
         recipe_input = from_directory_monitor()
         print('Recipe handler received input: ' + recipe_input[1])
@@ -149,12 +92,7 @@ def recipe_handler(from_directory_monitor, to_scheduler):
                 complete_process += line
         try:
             recipe = Recipe(recipe_input, complete_process)
-            if recipe.name not in all_recipes:
-                print('Creating new recipe')
-                all_recipes[recipe.name] = recipe
-            else:
-                print('Replacing existing recipe')
-                all_recipes[recipe.name] = recipe
+            to_task_generator(recipe)
         except:
             print('Something went wrong with parsing the recipe')
 
@@ -162,11 +100,60 @@ def recipe_handler(from_directory_monitor, to_scheduler):
 # TODO take input from the handlers and maintain a dictionary of patterns and recipes, and to schedule new processes with data once they are added or updated. The dictionaries in the relevant
 # handlers should also be removed as otherwise its just replicating data. Possibly the handlers in their entirety could be removed as I'm not sure if they're adding anything individually.
 @process
-def scheduler(from_data_handler, from_pattern_handler, from_recipe_handler):
+def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler, to_scheduler):
     pass
 
 
-#
+@process
+def scheduler(from_task_generator, from_resources, to_resources):
+    buffer = []
+    pre_conditions = [False] * len(from_resources)
+    # This is for the monitor, should always be True
+    pre_conditions.append(True)
+    input_guards = []
+    for from_resource in from_resources:
+        input_guards.append(InputGuard(from_resource))
+    input_guards.append(InputGuard(from_task_generator))
+    while True:
+        pre_conditioned = []
+        for i, guard in enumerate(input_guards):
+            if pre_conditions[i]:
+                pre_conditioned.append(guard)
+        channel_index, message = PriSelect(
+            pre_conditioned
+        )
+        if channel_index == from_task_generator:
+            replace_previous_entry = False
+            # If there is already a scheduled process identical to this, then replace that one
+            for index, element in enumerate(buffer):
+                if element.get_process_name() == message.get_process_name():
+                    buffer[index] = message
+                    replace_previous_entry = True
+            if not replace_previous_entry:
+                buffer.append(message)
+            for x in range(len(from_resources)):
+                pre_conditions[x] = True
+        # Input message came from a resource looking for a process. Can ignore empty input
+        else:
+            i = -1
+            for a in range(len(from_resources)):
+                if from_resources[a] == channel_index:
+                    i = a
+
+            to_resources[i](buffer[0])
+            del buffer[0]
+            if len(buffer) == 0:
+                for x in range(len(from_resources)):
+                    pre_conditions[x] = False
+
+
+@process
+def resource(to_scheduler, from_scheduler):
+    while True:
+        to_scheduler(0)
+        input_process = from_scheduler()
+        input_process.process_file()
+
 # @process
 # def rule_monitor(
 #         rule,
