@@ -7,16 +7,19 @@ from patterns import Pattern
 from pycsp.parallel import *
 
 
-# @process
-# def rule_changer(to_rule_monitor):
-#     time.sleep(variables.interruption_time)
-#     print('Rule changer sending interruption')
-#     to_rule_monitor(0)
-#     print('Rule changer sent interruption')
+def recursive_search(search_directory, to_handler):
+    for file in os.listdir(search_directory):
+        print('Discovered initial file and sending it on to handler: ' + file)
+        # If file is a directory then search in that as well
+        if '.' not in file:
+            recursive_search(search_directory + '\\' + file, to_handler)
+        else:
+            to_handler((search_directory, file))
+    pass
 
 
 @process
-def directory_monitor(directory_to_monitor, to_handler_processor):
+def directory_monitor(directory_to_monitor, to_handler):
 
     print('monitoring :' + directory_to_monitor)
 
@@ -32,9 +35,8 @@ def directory_monitor(directory_to_monitor, to_handler_processor):
         None
     )
 
-    for file in os.listdir(directory_to_monitor):
-        print('Discovered initial file and sending it on to handler: ' + file)
-        to_handler_processor((directory_to_monitor, file))
+    # Get initial data sets
+    recursive_search(directory_to_monitor, to_handler)
 
     while True:
         results = win32file.ReadDirectoryChangesW(
@@ -52,8 +54,8 @@ def directory_monitor(directory_to_monitor, to_handler_processor):
         )
         for action, file in results:
             if action in variables.actions:
-                print('Seen an event and sending it on to the handler: ' + file)
-                to_handler_processor((directory_to_monitor, file))
+                print('Seen an event (' + str(variables.actions.get(action)) + ') and sending it on to the handler: ' + file)
+                to_handler((directory_to_monitor, file))
 #                rule_monitor_to_scheduler(rule.task.create_process(file, path_to_watch, path_to_write))
 
 
@@ -101,7 +103,18 @@ def recipe_handler(from_directory_monitor, to_task_generator):
 # handlers should also be removed as otherwise its just replicating data. Possibly the handlers in their entirety could be removed as I'm not sure if they're adding anything individually.
 @process
 def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler, to_scheduler):
-    pass
+    while True:
+        input_channel, message = PriSelect(
+            InputGuard(from_pattern_handler),
+            InputGuard(from_recipe_handler),
+            InputGuard(from_data_handler)
+        )
+        if input_channel == from_pattern_handler:
+            print('~~~ Task Generator was notified by the pattern handler about: ' + str(message))
+        elif input_channel == from_recipe_handler:
+            print('~~~ Task Generator was notified by the recipe handler about: ' + str(message))
+        elif input_channel == from_data_handler:
+            print('~~~ Task Generator was notified by the data handler about: ' + str(message))
 
 
 @process
