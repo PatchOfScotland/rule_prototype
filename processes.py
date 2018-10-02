@@ -2,8 +2,8 @@ import win32file
 import win32con
 import os
 import variables
-from recipes import Recipe
-from patterns import Pattern
+from recipe import Recipe
+from pattern import Pattern
 from pycsp.parallel import *
 
 
@@ -99,10 +99,10 @@ def recipe_handler(from_directory_monitor, to_task_generator):
             print('Something went wrong with parsing the recipe')
 
 
-# TODO take input from the handlers and maintain a dictionary of patterns and recipes, and to schedule new processes with data once they are added or updated. The dictionaries in the relevant
-# handlers should also be removed as otherwise its just replicating data. Possibly the handlers in their entirety could be removed as I'm not sure if they're adding anything individually.
 @process
 def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler, to_scheduler):
+    recipes = {}
+    patterns = {}
     while True:
         input_channel, message = PriSelect(
             InputGuard(from_pattern_handler),
@@ -111,8 +111,24 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
         )
         if input_channel == from_pattern_handler:
             print('~~~ Task Generator was notified by the pattern handler about: ' + str(message))
+            if message.get_pattern_name() in patterns:
+                patterns[message.get_pattern_name()] = message
+                print('~~~ Pattern was already present, has been updated')
+                # TODO re-run previous scheduled work with this new pattern
+            else:
+                patterns[message.get_pattern_name()] = message
+                print('~~~ Pattern is new, has been added')
+                # TODO post facto apply to data already detected
         elif input_channel == from_recipe_handler:
             print('~~~ Task Generator was notified by the recipe handler about: ' + str(message))
+            if message.name in recipes:
+                recipes[message.name] = message
+                print('~~~ Recipe was already present, has been updated')
+                # TODO re-run previous scheduled work with this new recipe
+            else:
+                recipes[message.name] = message
+                print('~~~ Recipe is new, has been added')
+                # TODO post facto apply to patterns already added but not run
         elif input_channel == from_data_handler:
             print('~~~ Task Generator was notified by the data handler about: ' + str(message))
 
