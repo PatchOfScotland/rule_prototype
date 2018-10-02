@@ -11,16 +11,23 @@ def recursive_search(search_directory, to_handler):
             to_handler((search_directory, file))
 
 
-def get_matching_patterns(all_patterns, input):
-    print('checking patterns ...')
-    print('input: ' + input)
+def get_matching_patterns(all_patterns, directory):
     matching_patterns = []
     for pattern in all_patterns:
-        print('pattern: ' + str(all_patterns[pattern].input_directory))
-        if all_patterns[pattern].input_directory == input:
+        if all_patterns[pattern].input_directory == directory:
             matching_patterns.append(all_patterns[pattern])
-    print('matching patterns: ' + str(matching_patterns))
     return matching_patterns
+
+
+def get_recipe(all_recipes, pattern):
+    print('finding recipe...')
+    print('pattern.recipe: ' + str(pattern.recipe))
+    print('all recipes: :' + str(all_recipes))
+    for recipe in all_recipes:
+        print('recipe: ' + str(all_recipes[recipe].name))
+        if all_recipes[recipe].name == pattern.recipe:
+            return all_recipes[recipe]
+    return None
 
 
 

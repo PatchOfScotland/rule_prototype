@@ -3,7 +3,6 @@ import time
 
 number_of_resources = 3
 processing_time = 1
-# interruption_time = 10
 
 time_stamp = time.time()
 our_path = os.path.abspath('.') + '\\demo\\' + str(time_stamp)
@@ -11,6 +10,10 @@ recipe_directory = our_path + '\\recipes'
 pattern_directory = our_path + '\\patterns'
 data_directory = our_path + '\\data'
 initial_data_directory = data_directory + '\\initial_data'
+
+recipe_extension = '.txt'
+pattern_extension = '.txt.'
+data_extension = '.txt'
 
 initial_recipes = [
     [

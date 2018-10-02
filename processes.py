@@ -3,6 +3,7 @@ import win32con
 import variables
 from recipe import Recipe
 from pattern import Pattern
+from task import Task
 from pycsp.parallel import *
 from methods import *
 
@@ -45,7 +46,6 @@ def directory_monitor(directory_to_monitor, to_handler):
             if action in variables.actions:
                 print('Seen an event (' + str(variables.actions.get(action)) + ') and sending it on to the handler: ' + file)
                 to_handler((directory_to_monitor, file))
-#                rule_monitor_to_scheduler(rule.task.create_process(file, path_to_watch, path_to_write))
 
 
 @process
@@ -66,7 +66,8 @@ def pattern_handler(from_directory_monitor, to_task_generator):
             pattern = input_file.read()
         try:
             pattern_as_tuple = eval(pattern)
-            pattern = Pattern(pattern_as_tuple[0], pattern_as_tuple[1], pattern_as_tuple[2])
+            recipe_name = variables.recipe_directory + '\\' + pattern_as_tuple[0] + variables.recipe_extension
+            pattern = Pattern(recipe_name, pattern_as_tuple[1], pattern_as_tuple[2])
             to_task_generator(pattern)
         except:
             print('Something went wrong with parsing the pattern')
@@ -82,7 +83,7 @@ def recipe_handler(from_directory_monitor, to_task_generator):
             for line in input_file:
                 complete_process += line
         try:
-            recipe = Recipe(recipe_input, complete_process)
+            recipe = Recipe(recipe_input[0] + '\\' + recipe_input[1], complete_process)
             to_task_generator(recipe)
         except:
             print('Something went wrong with parsing the recipe')
@@ -110,6 +111,9 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
                 # TODO post facto apply to data already detected
         elif input_channel == from_recipe_handler:
             print('~~~ Task Generator was notified by the recipe handler about: ' + str(message))
+            print('message: ' + str(message))
+            print('message.name : ' + str(message.name))
+
             if message.name in recipes:
                 recipes[message.name] = message
                 print('~~~ Recipe was already present, has been updated')
@@ -122,11 +126,19 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
             print('~~~ Task Generator was notified by the data handler about: ' + str(message))
             input_file = message[1]
             input_directory = message[0]
-            print('file: ' + input_file)
-            print('directory: ' + input_directory)
-            # take the first character off the intermediate_directories as it is a '/', which will muck things up
             matching_patterns = get_matching_patterns(patterns, input_directory)
             print('matching patterns: ' + str(matching_patterns))
+            for pattern in matching_patterns:
+                recipe = get_recipe(recipes, pattern)
+                if recipe != None:
+                    task = Task(pattern, recipe, input_file)
+                    print('new task scheduled')
+                    to_scheduler(task)
+                    # TODO add to some list of all scheduled tasks
+                # rule_monitor_to_scheduler(rule.task.create_process(file, path_to_watch, path_to_write))
+                else:
+                    print('Required recipe does not exist yet')
+                    # TODO save this to some list to be run again if the recipe does turn up
 
 
 
@@ -149,14 +161,8 @@ def scheduler(from_task_generator, from_resources, to_resources):
             pre_conditioned
         )
         if channel_index == from_task_generator:
-            replace_previous_entry = False
-            # If there is already a scheduled process identical to this, then replace that one
-            for index, element in enumerate(buffer):
-                if element.get_process_name() == message.get_process_name():
-                    buffer[index] = message
-                    replace_previous_entry = True
-            if not replace_previous_entry:
-                buffer.append(message)
+            # TODO overwrite existing tasks in the buffer if they're for the same thing
+            buffer.append(message)
             for x in range(len(from_resources)):
                 pre_conditions[x] = True
         # Input message came from a resource looking for a process. Can ignore empty input
@@ -165,7 +171,6 @@ def scheduler(from_task_generator, from_resources, to_resources):
             for a in range(len(from_resources)):
                 if from_resources[a] == channel_index:
                     i = a
-
             to_resources[i](buffer[0])
             del buffer[0]
             if len(buffer) == 0:
@@ -177,7 +182,8 @@ def scheduler(from_task_generator, from_resources, to_resources):
 def resource(to_scheduler, from_scheduler):
     while True:
         to_scheduler(0)
-        input_process = from_scheduler()
+        input_task = from_scheduler()
+        input_process = input_task.create_process()
         input_process.process_file()
 
 # @process

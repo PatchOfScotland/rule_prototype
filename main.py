@@ -11,16 +11,16 @@ if __name__ == '__main__':
         print('Path already exists, exiting')
         exit()
     for count, recipe in enumerate(variables.initial_recipes):
-        recipe_file = open(variables.recipe_directory + '\\recipe_' + str(count) + '.txt', 'w')
+        recipe_file = open(variables.recipe_directory + '\\recipe_' + str(count) + variables.recipe_extension, 'w')
         for line in recipe:
             recipe_file.write(line + '\n')
         recipe_file.close()
     for count, data in enumerate(variables.initial_data):
-        data_file = open(variables.initial_data_directory + '\\data_' + str(count) + '.txt', 'w')
+        data_file = open(variables.initial_data_directory + '\\data_' + str(count) + variables.data_extension, 'w')
         data_file.write(data)
         data_file.close()
     for count, pattern in enumerate(variables.initial_patterns):
-        pattern_file = open(variables.pattern_directory + '\\pattern_' + str(count) + '.txt', 'w')
+        pattern_file = open(variables.pattern_directory + '\\pattern_' + str(count) + variables.pattern_extension, 'w')
         pattern_file.write(str(pattern))
         pattern_file.close()
 
