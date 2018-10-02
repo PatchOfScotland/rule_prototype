@@ -7,14 +7,15 @@ from pattern import Pattern
 from pycsp.parallel import *
 
 
-def recursive_search(search_directory, to_handler):
+def recursive_search(search_directory, to_handler, top_level_directory):
     for file in os.listdir(search_directory):
         print('Discovered initial file and sending it on to handler: ' + file)
         # If file is a directory then search in that as well
         if '.' not in file:
-            recursive_search(search_directory + '\\' + file, to_handler)
+            recursive_search(search_directory + '\\' + file, to_handler, top_level_directory)
         else:
-            to_handler((search_directory, file))
+            intermediate_directories = search_directory.replace(top_level_directory, '')
+            to_handler((top_level_directory, intermediate_directories, file))
     pass
 
 
@@ -36,7 +37,7 @@ def directory_monitor(directory_to_monitor, to_handler):
     )
 
     # Get initial data sets
-    recursive_search(directory_to_monitor, to_handler)
+    recursive_search(directory_to_monitor, to_handler, directory_to_monitor)
 
     while True:
         results = win32file.ReadDirectoryChangesW(
@@ -73,7 +74,7 @@ def pattern_handler(from_directory_monitor, to_task_generator):
     while True:
         pattern_input = from_directory_monitor()
         print('Pattern handler received input: ' + pattern_input[1])
-        with open(pattern_input[0] + '\\' + pattern_input[1]) as input_file:
+        with open(pattern_input[0] + '\\' + pattern_input[1] + '\\' + pattern_input[2]) as input_file:
             pattern = input_file.read()
         try:
             pattern_as_tuple = eval(pattern)
@@ -89,7 +90,7 @@ def recipe_handler(from_directory_monitor, to_task_generator):
         recipe_input = from_directory_monitor()
         print('Recipe handler received input: ' + recipe_input[1])
         complete_process = ''
-        with open(recipe_input[0] + '\\' + recipe_input[1]) as input_file:
+        with open(recipe_input[0] + '\\' + recipe_input[1] + '\\' + recipe_input[2]) as input_file:
             for line in input_file:
                 complete_process += line
         try:
@@ -131,6 +132,16 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
                 # TODO post facto apply to patterns already added but not run
         elif input_channel == from_data_handler:
             print('~~~ Task Generator was notified by the data handler about: ' + str(message))
+            input_file = message[2]
+            intermediate_directories = message[1]
+            input_directory = message[0]
+            print('file: ' + input_file)
+            print('intermediate directories: ' + intermediate_directories)
+            print('directory: ' + input_directory)
+            pattern = None
+            for p in patterns:
+                if patterns[p] == 'placeholder':
+                    pass
 
 
 @process

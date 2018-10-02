@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4e46ec3-2306-4b0a-819d-5e3b83c04d0e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/task.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patterns.py" beforeDir="false" afterPath="$PROJECT_DIR$/pattern.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/processes.py" beforeDir="false" afterPath="$PROJECT_DIR$/processes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipes.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipe.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,24 +32,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="15" />
+          <entry key="py" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="15" />
+          <entry key="Python" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="25" />
-          <entry key="py" value="18119" />
+          <entry key="py" value="18723" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="25" />
-          <entry key="Python" value="18119" />
+          <entry key="Python" value="18723" />
         </counts>
       </usages-collector>
     </session>
@@ -60,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="57" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
+            <state relative-caret-position="442">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
             </state>
           </provider>
         </entry>
@@ -69,7 +68,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/variables.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-427">
+            <state relative-caret-position="-323">
               <caret line="2" selection-start-line="2" selection-end-line="2" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -78,7 +77,19 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+              <folding>
+                <marker date="1538478696696" expanded="true" signature="12:17" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pattern.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
@@ -92,17 +103,17 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/processes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="112" column="98" selection-start-line="112" selection-start-column="98" selection-end-line="112" selection-end-column="98" />
+            <state relative-caret-position="493">
+              <caret line="138" column="73" selection-start-line="138" selection-start-column="73" selection-end-line="138" selection-end-column="73" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <marker date="1538477909147" expanded="true" signature="196:558" ph="..." />
-                <marker date="1538477909147" expanded="true" signature="3488:5052" ph="..." />
-                <marker date="1538477909147" expanded="true" signature="3488:6918" ph="..." />
-                <marker date="1538477909147" expanded="true" signature="6745:6918" ph="..." />
+                <marker date="1538479404641" expanded="true" signature="217:718" ph="..." />
+                <marker date="1538479404641" expanded="true" signature="3721:5711" ph="..." />
+                <marker date="1538479404641" expanded="true" signature="3721:7577" ph="..." />
+                <marker date="1538479404641" expanded="true" signature="7404:7577" ph="..." />
               </folding>
             </state>
           </provider>
@@ -154,8 +165,9 @@
         <option value="$PROJECT_DIR$/recipes.py" />
         <option value="$PROJECT_DIR$/variables.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/processes.py" />
         <option value="$PROJECT_DIR$/pattern.py" />
+        <option value="$PROJECT_DIR$/task.py" />
+        <option value="$PROJECT_DIR$/processes.py" />
       </list>
     </option>
   </component>
@@ -165,7 +177,9 @@
     <option name="width" value="1296" />
     <option name="height" value="704" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -348,30 +362,6 @@
     <entry file="file://$PROJECT_DIR$/../../Scripts/backupToIDMC.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/structs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="57" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/variables.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-427">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/recipe.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -382,16 +372,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processes.py">
+    <entry file="file://$PROJECT_DIR$/structs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="112" column="98" selection-start-line="112" selection-start-column="98" selection-end-line="112" selection-end-column="98" />
+        <state relative-caret-position="170">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
           <folding>
-            <element signature="e#0#16#0" expanded="true" />
-            <marker date="1538477909147" expanded="true" signature="196:558" ph="..." />
-            <marker date="1538477909147" expanded="true" signature="3488:5052" ph="..." />
-            <marker date="1538477909147" expanded="true" signature="3488:6918" ph="..." />
-            <marker date="1538477909147" expanded="true" signature="6745:6918" ph="..." />
+            <marker date="1538478696696" expanded="true" signature="12:17" ph="..." />
           </folding>
         </state>
       </provider>
@@ -404,6 +397,37 @@
             <marker date="1538477947857" expanded="true" signature="15:20" ph="..." />
             <marker date="1538477947857" expanded="true" signature="338:339" ph="..." />
             <marker date="1538477947857" expanded="true" signature="338:343" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/variables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-323">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="138" column="73" selection-start-line="138" selection-start-column="73" selection-end-line="138" selection-end-column="73" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+            <marker date="1538479404641" expanded="true" signature="217:718" ph="..." />
+            <marker date="1538479404641" expanded="true" signature="3721:5711" ph="..." />
+            <marker date="1538479404641" expanded="true" signature="3721:7577" ph="..." />
+            <marker date="1538479404641" expanded="true" signature="7404:7577" ph="..." />
           </folding>
         </state>
       </provider>
