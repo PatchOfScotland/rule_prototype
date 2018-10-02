@@ -17,6 +17,8 @@ data_extension = '.txt'
 
 initial_recipes = [
     [
+        "import time",
+        "import variables",
         "input_file = open(self.input_file, 'r')",
         "data = input_file.read()",
         "input_file.close()",
@@ -27,6 +29,8 @@ initial_recipes = [
         "output_file.close()",
     ],
     [
+        "import time",
+        "import variables",
         "input_file = open(self.input_file, 'r')",
         "data = input_file.read()",
         "input_file.close()",
@@ -37,6 +41,8 @@ initial_recipes = [
         "output_file.close()",
     ],
     [
+        "import time",
+        "import variables",
         "input_file = open(self.input_file, 'r')",
         "data = input_file.read()",
         "input_file.close()",

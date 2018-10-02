@@ -12,10 +12,15 @@ def recursive_search(search_directory, to_handler):
 
 
 def get_matching_patterns(all_patterns, directory):
+    print('finding matching pattern...')
+    print('all_patterns: ' + str(all_patterns))
+    print('directory: ' + directory)
     matching_patterns = []
     for pattern in all_patterns:
+        print('pattern input_directory: ' + str(all_patterns[pattern].input_directory))
         if all_patterns[pattern].input_directory == directory:
             matching_patterns.append(all_patterns[pattern])
+    print('matching_patterns: ' + str(matching_patterns))
     return matching_patterns
 
 

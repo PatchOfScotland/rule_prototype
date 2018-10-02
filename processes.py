@@ -126,8 +126,10 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
             print('~~~ Task Generator was notified by the data handler about: ' + str(message))
             input_file = message[1]
             input_directory = message[0]
+            # # if there is some intermediate directory
+            # if '\\' in input_file:
+            #     input_directory = input_directory + '\\' + input_file[:input_file.rfind('\\')]
             matching_patterns = get_matching_patterns(patterns, input_directory)
-            print('matching patterns: ' + str(matching_patterns))
             for pattern in matching_patterns:
                 recipe = get_recipe(recipes, pattern)
                 if recipe != None:
@@ -183,6 +185,8 @@ def resource(to_scheduler, from_scheduler):
     while True:
         to_scheduler(0)
         input_task = from_scheduler()
+        if not os.path.exists(input_task.pattern.output_directory):
+            os.makedirs(input_task.pattern.output_directory)
         input_process = input_task.create_process()
         input_process.process_file()
 
