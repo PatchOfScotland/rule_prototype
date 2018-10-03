@@ -26,7 +26,7 @@ initial_recipes = [
         "time.sleep(variables.processing_time)",
         "output_file = open(self.output_file, 'w')",
         "output_file.write(data)",
-        "output_file.close()",
+        "output_file.close()"
     ],
     [
         "import time",
@@ -38,7 +38,7 @@ initial_recipes = [
         "time.sleep(variables.processing_time)",
         "output_file = open(self.output_file, 'w')",
         "output_file.write(data)",
-        "output_file.close()",
+        "output_file.close()"
     ],
     [
         "import time",
@@ -50,7 +50,7 @@ initial_recipes = [
         "time.sleep(variables.processing_time)",
         "output_file = open(self.output_file, 'w')",
         "output_file.write(data)",
-        "output_file.close()",
+        "output_file.close()"
     ]
 ]
 

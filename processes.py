@@ -45,14 +45,15 @@ def directory_monitor(directory_to_monitor, to_handler):
         for action, file in results:
             if action in variables.actions:
                 print('Seen an event (' + str(variables.actions.get(action)) + ') and sending it on to the handler: ' + file)
-                to_handler((directory_to_monitor, file))
+                path_details = get_path_details(directory_to_monitor + '\\' + file)
+                to_handler(path_details)
 
 
 @process
 def data_handler(from_directory_monitor, to_task_generator):
     while True:
         data_input = from_directory_monitor()
-        print('Data handler received input: ' + data_input[1])
+#        print('Data handler received input: ' + data_input[1])
         to_task_generator(data_input)
 
 
@@ -61,12 +62,12 @@ def data_handler(from_directory_monitor, to_task_generator):
 def pattern_handler(from_directory_monitor, to_task_generator):
     while True:
         pattern_input = from_directory_monitor()
-        print('Pattern handler received input: ' + pattern_input[1])
-        with open(pattern_input[0] + '\\' + pattern_input[1]) as input_file:
+#        print('Pattern handler received input: ' + pattern_input[1])
+        with open(variables.our_path + pattern_input[0] + pattern_input[1]) as input_file:
             pattern = input_file.read()
         try:
             pattern_as_tuple = eval(pattern)
-            recipe_name = variables.recipe_directory + '\\' + pattern_as_tuple[0] + variables.recipe_extension
+            recipe_name = variables.our_path + pattern_as_tuple[0] + variables.recipe_extension
             pattern = Pattern(recipe_name, pattern_as_tuple[1], pattern_as_tuple[2])
             to_task_generator(pattern)
         except:
@@ -77,13 +78,13 @@ def pattern_handler(from_directory_monitor, to_task_generator):
 def recipe_handler(from_directory_monitor, to_task_generator):
     while True:
         recipe_input = from_directory_monitor()
-        print('Recipe handler received input: ' + recipe_input[1])
+#        print('Recipe handler received input: ' + recipe_input[1])
         complete_process = ''
-        with open(recipe_input[0] + '\\' + recipe_input[1]) as input_file:
+        with open(variables.our_path + recipe_input[0] + recipe_input[1]) as input_file:
             for line in input_file:
                 complete_process += line
         try:
-            recipe = Recipe(recipe_input[0] + '\\' + recipe_input[1], complete_process)
+            recipe = Recipe(recipe_input[0] + recipe_input[1], complete_process)
             to_task_generator(recipe)
         except:
             print('Something went wrong with parsing the recipe')
@@ -107,12 +108,12 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
                 # TODO re-run previous scheduled work with this new pattern
             else:
                 patterns[message.get_pattern_name()] = message
-                print('~~~ Pattern is new, has been added')
+                print('~~~ Pattern is new, has been added (' + str(len(patterns)) + ')')
                 # TODO post facto apply to data already detected
         elif input_channel == from_recipe_handler:
             print('~~~ Task Generator was notified by the recipe handler about: ' + str(message))
-            print('message: ' + str(message))
-            print('message.name : ' + str(message.name))
+#            print('message: ' + str(message))
+#            print('message.name : ' + str(message.name))
 
             if message.name in recipes:
                 recipes[message.name] = message
@@ -120,7 +121,7 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
                 # TODO re-run previous scheduled work with this new recipe
             else:
                 recipes[message.name] = message
-                print('~~~ Recipe is new, has been added')
+                print('~~~ Recipe is new, has been added (' + str(len(recipes)) + ')')
                 # TODO post facto apply to patterns already added but not run
         elif input_channel == from_data_handler:
             print('~~~ Task Generator was notified by the data handler about: ' + str(message))
@@ -189,72 +190,3 @@ def resource(to_scheduler, from_scheduler):
             os.makedirs(input_task.pattern.output_directory)
         input_process = input_task.create_process()
         input_process.process_file()
-
-# @process
-# def rule_monitor(
-#         rule,
-#         repeat_on_rule_change,
-#         repeat_on_data_change,
-#         apply_post_facto,
-#         rule_monitor_to_scheduler,
-#         changer_to_monitor):
-#     actions = {
-#         1: 'Created',
-#         2: 'Deleted',
-#         3: 'Updated',
-#         4: 'Renamed from something',
-#         5: 'Renamed to something'
-#     }
-#
-#     file_list_directory = 0x0001
-#
-#     our_path = os.path.abspath('.')
-#
-#     directory_to_watch = rule.input_directory
-#     path_to_watch = our_path + directory_to_watch
-#     print("Watching: " + path_to_watch)
-#
-#     directory_to_write = rule.output_directory
-#     path_to_write = our_path + directory_to_write
-#     print("Writing to: " + path_to_write)
-#
-#     if not os.path.exists(path_to_write):
-#         os.makedirs(path_to_write)
-#
-#     handle = win32file.CreateFile(
-#         path_to_watch,
-#         file_list_directory,
-#         win32con.FILE_SHARE_READ | win32con.FILE_SHARE_WRITE | win32con.FILE_SHARE_DELETE,
-#         None,
-#         win32con.OPEN_EXISTING,
-#         win32con.FILE_FLAG_BACKUP_SEMANTICS,
-#         None
-#     )
-#
-#     if apply_post_facto:
-#         for file in os.listdir(path_to_watch):
-#             print('Discovered ' + file)
-#             rule_monitor_to_scheduler(rule.task.create_process(file, path_to_watch, path_to_write))
-#
-#     while True:
-#         results = win32file.ReadDirectoryChangesW(
-#             handle,
-#             1024,
-#             True,
-#             win32con.FILE_NOTIFY_CHANGE_FILE_NAME |
-#             win32con.FILE_NOTIFY_CHANGE_DIR_NAME |
-#             win32con.FILE_NOTIFY_CHANGE_ATTRIBUTES |
-#             win32con.FILE_NOTIFY_CHANGE_SIZE |
-#             win32con.FILE_NOTIFY_CHANGE_LAST_WRITE |
-#             win32con.FILE_NOTIFY_CHANGE_SECURITY,
-#             None,
-#             None
-#         )
-#         for action, file in results:
-#             if actions.get(action) == 'Created' or \
-#                     actions.get(action) == 'Renamed to something' or \
-#                     (actions.get(action) == 'Updated' and repeat_on_data_change) or \
-#                     (actions.get(action) == 'Renamed from something' and repeat_on_data_change):
-#                 print('Seen an event and scheduling ' + file)
-#                 rule_monitor_to_scheduler(rule.task.create_process(file, path_to_watch, path_to_write))
-#
