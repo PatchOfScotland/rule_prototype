@@ -10,3 +10,7 @@ class Task:
     def create_process(self):
         process = Process(self.recipe, self.pattern, self.file)
         return process
+
+    # returns task identifier. This can be improved as currently is super crude, but hey, at least its unique
+    def get_task_name(self):
+        return str(self.file) + str(self.recipe) + str(self.pattern)

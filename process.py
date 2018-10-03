@@ -7,9 +7,9 @@ class Process:
         self.name = recipe.name
 
     def process_file(self):
-        print('@@@ Starting some processing...')
-        print('@@@ name: ' + str(self.name))
-        print('@@@ input_file: ' + str(self.input_file))
-        print('@@@ output_file: ' + str(self.output_file))
+#        print('@@@ Starting some processing...')
+#        print('@@@ name: ' + str(self.name))
+#        print('@@@ input_file: ' + str(self.input_file))
+#        print('@@@ output_file: ' + str(self.output_file))
         exec(self.processing)
 

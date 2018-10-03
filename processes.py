@@ -135,7 +135,7 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
                 recipe = get_recipe(recipes, pattern)
                 if recipe != None:
                     task = Task(pattern, recipe, input_file)
-                    print('new task scheduled')
+                    print('new task sent to scheduler')
                     to_scheduler(task)
                     # TODO add to some list of all scheduled tasks
                 # rule_monitor_to_scheduler(rule.task.create_process(file, path_to_watch, path_to_write))
@@ -164,8 +164,16 @@ def scheduler(from_task_generator, from_resources, to_resources):
             pre_conditioned
         )
         if channel_index == from_task_generator:
-            # TODO overwrite existing tasks in the buffer if they're for the same thing
-            buffer.append(message)
+            task_match = False
+            for index, buffered in enumerate(buffer):
+                if buffered.get_task_name() == message.get_task_name():
+                    buffer[index] = message
+                    print('old task updated (' + str(len(buffer)) + ')')
+                    task_match = True
+                    break
+            if not task_match:
+                print('new task scheduled (' + str(len(buffer)) + ')')
+                buffer.append(message)
             for x in range(len(from_resources)):
                 pre_conditions[x] = True
         # Input message came from a resource looking for a process. Can ignore empty input
@@ -176,6 +184,7 @@ def scheduler(from_task_generator, from_resources, to_resources):
                     i = a
             to_resources[i](buffer[0])
             del buffer[0]
+            print('task processed (' + str(len(buffer)) + ')')
             if len(buffer) == 0:
                 for x in range(len(from_resources)):
                     pre_conditions[x] = False
