@@ -34,12 +34,16 @@ def get_matching_patterns(all_patterns, directory):
 
 
 def get_recipe(all_recipes, pattern):
-    print('finding recipe...')
-    print('pattern.recipe: ' + str(pattern.recipe))
-    print('all recipes: :' + str(all_recipes))
+#    print('finding recipe...')
+#    print('pattern.recipe: ' + str(pattern.recipe))
+#    print('all recipes: :' + str(all_recipes))
+    recipe_directory = variables.recipe_directory.replace(variables.our_path, '')
+    recipe_path = recipe_directory + '\\' + pattern.recipe
+#    print('recipe_directory: ' + recipe_directory)
+#    print('recipe_path: ' + recipe_path)
     for recipe in all_recipes:
-        print('recipe: ' + str(all_recipes[recipe].name))
-        if all_recipes[recipe].name == pattern.recipe:
+#        print('recipe: ' + str(all_recipes[recipe].name))
+        if all_recipes[recipe].name == recipe_path:
             return all_recipes[recipe]
     return None
 

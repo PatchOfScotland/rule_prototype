@@ -67,7 +67,7 @@ def pattern_handler(from_directory_monitor, to_task_generator):
             pattern = input_file.read()
         try:
             pattern_as_tuple = eval(pattern)
-            recipe_name = variables.our_path + pattern_as_tuple[0] + variables.recipe_extension
+            recipe_name = pattern_as_tuple[0] + variables.recipe_extension
             pattern = Pattern(recipe_name, pattern_as_tuple[1], pattern_as_tuple[2])
             to_task_generator(pattern)
         except:
@@ -130,7 +130,7 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
             # # if there is some intermediate directory
             # if '\\' in input_file:
             #     input_directory = input_directory + '\\' + input_file[:input_file.rfind('\\')]
-            matching_patterns = get_matching_patterns(patterns, input_directory)
+            matching_patterns = get_matching_patterns(patterns, variables.our_path + input_directory)
             for pattern in matching_patterns:
                 recipe = get_recipe(recipes, pattern)
                 if recipe != None:
