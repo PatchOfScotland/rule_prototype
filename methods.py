@@ -9,15 +9,26 @@ def get_path_details(complete_path):
     return (directory_path, file)
 
 
-def recursive_search(search_directory, to_handler):
+def recursive_search_to_process(search_directory, to_handler):
     for file in os.listdir(search_directory):
         file_path = search_directory + '\\' + file
         # If file is a directory then search in that as well
         if '.' not in file:
-            recursive_search(file_path, to_handler)
+            recursive_search_to_process(file_path, to_handler)
         else:
             path_details = get_path_details(file_path)
             to_handler(path_details)
+
+
+def recursive_search_to_list(search_directory, file_list):
+    for file in os.listdir(search_directory):
+        file_path = search_directory + '\\' + file
+        # If file is a directory then search in that as well
+        if '.' not in file:
+            recursive_search_to_process(file_path, file_list)
+        else:
+            path_details = get_path_details(file_path)
+            file_list.append(path_details)
 
 
 def get_matching_patterns(all_patterns, directory):

@@ -26,7 +26,7 @@ def directory_monitor(directory_to_monitor, to_handler):
     )
 
     # Get initial data sets
-    recursive_search(directory_to_monitor, to_handler)
+    recursive_search_to_process(directory_to_monitor, to_handler)
 
     while True:
         results = win32file.ReadDirectoryChangesW(
@@ -109,7 +109,21 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
             else:
                 patterns[message.get_pattern_name()] = message
                 print('~~~ Pattern is new, has been added (' + str(len(patterns)) + ')')
-                # TODO post facto apply to data already detected
+#                print('pattern: ' + str(message))
+#                print('pattern.recipe: ' + str(message.recipe))
+#                print('pattern.input_directory: ' + str(message.input_directory))
+#                print('pattern.output_directory: ' + str(message.output_directory))
+                input_directory_contents = []
+                recursive_search_to_list(message.input_directory, input_directory_contents)
+                recipe = get_recipe(recipes, message)
+                if recipe is None:
+                    for file in input_directory_contents:
+                        task = Task(message, recipe, file)
+                        print('new task sent to scheduler')
+                        to_scheduler(task)
+                else:
+                    print('Required recipe does not exist yet')
+
         elif input_channel == from_recipe_handler:
             print('~~~ Task Generator was notified by the recipe handler about: ' + str(message))
 #            print('message: ' + str(message))
@@ -133,16 +147,12 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
             matching_patterns = get_matching_patterns(patterns, variables.our_path + input_directory)
             for pattern in matching_patterns:
                 recipe = get_recipe(recipes, pattern)
-                if recipe != None:
+                if recipe is None:
                     task = Task(pattern, recipe, input_file)
                     print('new task sent to scheduler')
                     to_scheduler(task)
-                    # TODO add to some list of all scheduled tasks
-                # rule_monitor_to_scheduler(rule.task.create_process(file, path_to_watch, path_to_write))
                 else:
                     print('Required recipe does not exist yet')
-                    # TODO save this to some list to be run again if the recipe does turn up
-
 
 
 @process
