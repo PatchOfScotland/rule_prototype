@@ -105,38 +105,41 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
             if message.get_pattern_name() in patterns:
                 patterns[message.get_pattern_name()] = message
                 print('~~~ Pattern was already present, has been updated')
-                # TODO re-run previous scheduled work with this new pattern
             else:
                 patterns[message.get_pattern_name()] = message
                 print('~~~ Pattern is new, has been added (' + str(len(patterns)) + ')')
-#                print('pattern: ' + str(message))
-#                print('pattern.recipe: ' + str(message.recipe))
-#                print('pattern.input_directory: ' + str(message.input_directory))
-#                print('pattern.output_directory: ' + str(message.output_directory))
-                input_directory_contents = []
-                recursive_search_to_list(message.input_directory, input_directory_contents)
-                recipe = get_recipe(recipes, message)
-                if recipe is None:
-                    for file in input_directory_contents:
-                        task = Task(message, recipe, file)
-                        print('new task sent to scheduler')
-                        to_scheduler(task)
-                else:
-                    print('Required recipe does not exist yet')
-
+            # print('pattern: ' + str(message))
+            # print('pattern.recipe: ' + str(message.recipe))
+            # print('pattern.input_directory: ' + str(message.input_directory))
+            # print('pattern.output_directory: ' + str(message.output_directory))
+            input_directory_contents = []
+            recursive_search_to_list(message.input_directory, input_directory_contents)
+            recipe = get_recipe(recipes, message)
+            if recipe is not None:
+                for file in input_directory_contents:
+                    task = Task(message, recipe, file)
+                    print('new task sent to scheduler')
+                    to_scheduler(task)
+            else:
+                print('Required recipe does not exist yet')
         elif input_channel == from_recipe_handler:
             print('~~~ Task Generator was notified by the recipe handler about: ' + str(message))
 #            print('message: ' + str(message))
 #            print('message.name : ' + str(message.name))
-
             if message.name in recipes:
                 recipes[message.name] = message
                 print('~~~ Recipe was already present, has been updated')
-                # TODO re-run previous scheduled work with this new recipe
             else:
                 recipes[message.name] = message
                 print('~~~ Recipe is new, has been added (' + str(len(recipes)) + ')')
-                # TODO post facto apply to patterns already added but not run
+            matched_patterns = get_matching_patterns_by_recipe(patterns, message)
+            for pattern in matched_patterns:
+                input_directory_contents = []
+                recursive_search_to_list(pattern.input_directory, input_directory_contents)
+                for file in input_directory_contents:
+                    task = Task(pattern, message, file)
+                    print('new task sent to scheduler')
+                    to_scheduler(task)
         elif input_channel == from_data_handler:
             print('~~~ Task Generator was notified by the data handler about: ' + str(message))
             input_file = message[1]
@@ -144,10 +147,10 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
             # # if there is some intermediate directory
             # if '\\' in input_file:
             #     input_directory = input_directory + '\\' + input_file[:input_file.rfind('\\')]
-            matching_patterns = get_matching_patterns(patterns, variables.our_path + input_directory)
+            matching_patterns = get_matching_patterns_by_input(patterns, variables.our_path + input_directory)
             for pattern in matching_patterns:
                 recipe = get_recipe(recipes, pattern)
-                if recipe is None:
+                if recipe is not None:
                     task = Task(pattern, recipe, input_file)
                     print('new task sent to scheduler')
                     to_scheduler(task)

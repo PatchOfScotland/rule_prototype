@@ -10,28 +10,43 @@ def get_path_details(complete_path):
 
 
 def recursive_search_to_process(search_directory, to_handler):
-    for file in os.listdir(search_directory):
-        file_path = search_directory + '\\' + file
-        # If file is a directory then search in that as well
-        if '.' not in file:
-            recursive_search_to_process(file_path, to_handler)
-        else:
-            path_details = get_path_details(file_path)
-            to_handler(path_details)
+    if os.path.isdir(search_directory):
+        for file in os.listdir(search_directory):
+            file_path = search_directory + '\\' + file
+            # If file is a directory then search in that as well
+            if '.' not in file:
+                recursive_search_to_process(file_path, to_handler)
+            else:
+                path_details = get_path_details(file_path)
+                to_handler(path_details)
 
 
 def recursive_search_to_list(search_directory, file_list):
-    for file in os.listdir(search_directory):
-        file_path = search_directory + '\\' + file
-        # If file is a directory then search in that as well
-        if '.' not in file:
-            recursive_search_to_process(file_path, file_list)
-        else:
-            path_details = get_path_details(file_path)
-            file_list.append(path_details)
+    if os.path.isdir(search_directory):
+        for file in os.listdir(search_directory):
+            file_path = search_directory + '\\' + file
+            # If file is a directory then search in that as well
+            if '.' not in file:
+                recursive_search_to_process(file_path, file_list)
+            else:
+                path_details = get_path_details(file_path)
+                file_list.append(path_details)
 
 
-def get_matching_patterns(all_patterns, directory):
+def get_matching_patterns_by_recipe(all_patterns, recipe):
+#    print('finding matching pattern...')
+#    print('all_patterns: ' + str(all_patterns))
+#    print('recipe: ' + recipe)
+    matching_patterns = []
+    for pattern in all_patterns:
+#        print('pattern recipe: ' + str(all_patterns[pattern].recipe))
+        if all_patterns[pattern].recipe == recipe.name:
+            matching_patterns.append(all_patterns[pattern])
+#    print('matching_patterns: ' + str(matching_patterns))
+    return matching_patterns
+
+
+def get_matching_patterns_by_input(all_patterns, directory):
 #    print('finding matching pattern...')
 #    print('all_patterns: ' + str(all_patterns))
 #    print('directory: ' + directory)
