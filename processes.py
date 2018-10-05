@@ -73,17 +73,18 @@ def pattern_handler(from_directory_monitor, to_task_generator):
             try:
                 with open(variables.our_path + pattern_input[0] + pattern_input[1]) as input_file:
                     print('opened: ' + variables.our_path + pattern_input[0] + pattern_input[1])
-                    pattern = input_file.read()
+                    raw_pattern = input_file.read()
                 input_file.close()
                 break
             except PermissionError:
                 print('Permission denied to open pattern file, will try again')
                 time.sleep(variables.retry_duration)
         try:
-            print('pattern: ' + str(pattern))
+            print('raw_pattern: ' + str(raw_pattern))
+
             pattern_as_tuple = eval(pattern)
             print('pattern as tuple: ' + str(pattern_as_tuple))
-            recipe_name = pattern_as_tuple[0] + variables.recipe_extension
+            recipe_name = raw_pattern['recipe'] + variables.recipe_extension
             pattern = Pattern(recipe_name, pattern_as_tuple[1], pattern_as_tuple[2])
             to_task_generator(pattern)
         except:

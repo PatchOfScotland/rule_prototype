@@ -65,9 +65,21 @@ initial_data = [
 ]
 
 initial_patterns = [
-    ('recipe_0', initial_data_directory, data_directory + '\\pattern_0_output'),
-    ('recipe_1', initial_data_directory, data_directory + '\\pattern_1_output'),
-    ('recipe_2', data_directory + '\\pattern_1_output', data_directory + '\\pattern_2_output'),
+    {'recipe': 'recipe_0',
+     'input_directory': initial_data_directory,
+     'output_directory': data_directory,
+     'variables': {}
+     },
+    {'recipe': 'recipe_1',
+     'input_directory': initial_data_directory,
+     'output_directory': data_directory + '\\pattern_1_output',
+     'variables': {}
+     },
+    {'recipe': 'recipe_2',
+     'input_directory': data_directory + '\\pattern_1_output',
+     'output_directory': data_directory + '\\pattern_2_output',
+     'variables': {}
+     }
 ]
 
 actions = {
