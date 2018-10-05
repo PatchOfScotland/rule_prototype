@@ -1,6 +1,6 @@
 import win32file
 import win32con
-import variables
+import time
 from recipe import Recipe
 from pattern import Pattern
 from task import Task
@@ -26,7 +26,10 @@ def directory_monitor(directory_to_monitor, to_handler):
     )
 
     # Get initial data sets
-    recursive_search_to_process(directory_to_monitor, to_handler)
+    initial_data = []
+    recursive_search_to_list(directory_to_monitor, initial_data)
+    for data in initial_data:
+        to_handler(data)
 
     while True:
         results = win32file.ReadDirectoryChangesW(
@@ -43,8 +46,8 @@ def directory_monitor(directory_to_monitor, to_handler):
             None
         )
         for action, file in results:
-            if action in variables.actions:
-                print('Seen an event (' + str(variables.actions.get(action)) + ') and sending it on to the handler: ' + file)
+            if action in Variables.actions:
+                print('Seen an event (' + str(Variables.actions.get(action)) + ') and sending it on to the handler: ' + file)
                 path_details = get_path_details(directory_to_monitor + '\\' + file)
                 to_handler(path_details)
 
@@ -57,17 +60,23 @@ def data_handler(from_directory_monitor, to_task_generator):
         to_task_generator(data_input)
 
 
-
 @process
 def pattern_handler(from_directory_monitor, to_task_generator):
     while True:
         pattern_input = from_directory_monitor()
-#        print('Pattern handler received input: ' + pattern_input[1])
-        with open(variables.our_path + pattern_input[0] + pattern_input[1]) as input_file:
-            pattern = input_file.read()
+        print('Pattern handler received input: ' + pattern_input[1])
+        while True:
+            try:
+                with open(Variables.our_path + pattern_input[0] + pattern_input[1]) as input_file:
+                    pattern = input_file.read()
+                input_file.close()
+                break
+            except PermissionError:
+                print('Permission denied to open pattern file, will try again')
+                time.sleep(Variables.retry_duration)
         try:
             pattern_as_tuple = eval(pattern)
-            recipe_name = pattern_as_tuple[0] + variables.recipe_extension
+            recipe_name = pattern_as_tuple[0] + Variables.recipe_extension
             pattern = Pattern(recipe_name, pattern_as_tuple[1], pattern_as_tuple[2])
             to_task_generator(pattern)
         except:
@@ -79,10 +88,17 @@ def recipe_handler(from_directory_monitor, to_task_generator):
     while True:
         recipe_input = from_directory_monitor()
 #        print('Recipe handler received input: ' + recipe_input[1])
-        complete_process = ''
-        with open(variables.our_path + recipe_input[0] + recipe_input[1]) as input_file:
-            for line in input_file:
-                complete_process += line
+        while True:
+            try:
+                complete_process = ''
+                with open(Variables.our_path + recipe_input[0] + recipe_input[1]) as input_file:
+                    for line in input_file:
+                        complete_process += line
+                input_file.close()
+                break
+            except PermissionError:
+                print('Permission denied to open recipe file, will try again')
+                time.sleep(Variables.retry_duration)
         try:
             recipe = Recipe(recipe_input[0] + recipe_input[1], complete_process)
             to_task_generator(recipe)
@@ -108,17 +124,22 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
             else:
                 patterns[message.get_pattern_name()] = message
                 print('~~~ Pattern is new, has been added (' + str(len(patterns)) + ')')
+                print('')
             # print('pattern: ' + str(message))
             # print('pattern.recipe: ' + str(message.recipe))
             # print('pattern.input_directory: ' + str(message.input_directory))
             # print('pattern.output_directory: ' + str(message.output_directory))
             input_directory_contents = []
+            print('input_directory: ' + str(message.input_directory))
+            print('output_directory: ' + str(message.output_directory))
             recursive_search_to_list(message.input_directory, input_directory_contents)
             recipe = get_recipe(recipes, message)
+            print('input_directory_contents length: ' + str(len(input_directory_contents)))
+            print('recipe: ' + str(recipe))
             if recipe is not None:
                 for file in input_directory_contents:
                     task = Task(message, recipe, file)
-                    print('new task sent to scheduler')
+#                    print('new task sent to scheduler')
                     to_scheduler(task)
             else:
                 print('Required recipe does not exist yet')
@@ -138,7 +159,7 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
                 recursive_search_to_list(pattern.input_directory, input_directory_contents)
                 for file in input_directory_contents:
                     task = Task(pattern, message, file)
-                    print('new task sent to scheduler')
+#                    print('new task sent to scheduler')
                     to_scheduler(task)
         elif input_channel == from_data_handler:
             print('~~~ Task Generator was notified by the data handler about: ' + str(message))
@@ -147,12 +168,12 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
             # # if there is some intermediate directory
             # if '\\' in input_file:
             #     input_directory = input_directory + '\\' + input_file[:input_file.rfind('\\')]
-            matching_patterns = get_matching_patterns_by_input(patterns, variables.our_path + input_directory)
+            matching_patterns = get_matching_patterns_by_input(patterns, Variables.our_path + input_directory)
             for pattern in matching_patterns:
                 recipe = get_recipe(recipes, pattern)
                 if recipe is not None:
                     task = Task(pattern, recipe, input_file)
-                    print('new task sent to scheduler')
+#                    print('new task sent to scheduler')
                     to_scheduler(task)
                 else:
                     print('Required recipe does not exist yet')
@@ -208,7 +229,9 @@ def resource(to_scheduler, from_scheduler):
     while True:
         to_scheduler(0)
         input_task = from_scheduler()
+        print('Resource got new task: ' + str(input_task))
         if not os.path.exists(input_task.pattern.output_directory):
             os.makedirs(input_task.pattern.output_directory)
         input_process = input_task.create_process()
+        print('Resource created new process: ' + str(input_process))
         input_process.process_file()
