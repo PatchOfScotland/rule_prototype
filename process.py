@@ -2,8 +2,8 @@
 class Process:
     def __init__(self, recipe, pattern, file):
         self.processing = recipe.process_file
-#        print('input_file: ' + str(pattern.input_directory))
-#        print('file: ' + str(file))
+        print('input_file: ' + str(pattern.input_directory))
+        print('file: ' + str(file))
         self.input_file = pattern.input_directory + '\\' + file
         self.output_file = pattern.output_directory + '\\' + file
         self.name = recipe.name
