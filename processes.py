@@ -1,6 +1,7 @@
 import win32file
 import win32con
 import time
+import ast
 from recipe import Recipe
 from pattern import Pattern
 from task import Task
@@ -81,11 +82,16 @@ def pattern_handler(from_directory_monitor, to_task_generator):
                 time.sleep(variables.retry_duration)
         try:
             print('raw_pattern: ' + str(raw_pattern))
-
-            pattern_as_tuple = eval(pattern)
-            print('pattern as tuple: ' + str(pattern_as_tuple))
-            recipe_name = raw_pattern['recipe'] + variables.recipe_extension
-            pattern = Pattern(recipe_name, pattern_as_tuple[1], pattern_as_tuple[2])
+            pattern_dictionary = ast.literal_eval(raw_pattern)
+            recipe = pattern_dictionary['recipe'] + variables.recipe_extension
+            print('recipe_name: ' + recipe)
+            input_directory = pattern_dictionary['input_directory']
+            print('input_directory: ' + input_directory)
+            output_directory = pattern_dictionary['output_directory']
+            print('output_directory: ' + output_directory)
+            recipe_variables = pattern_dictionary['variables']
+            print('recipe_variables: ' + recipe_variables)
+            pattern = Pattern(recipe, input_directory, output_directory, recipe_variables)
             to_task_generator(pattern)
         except:
             print('Something went wrong with parsing the pattern')

@@ -1,0 +1,1 @@
+('recipe_0', variables.initial_data_directory, variables.data_directory + '\\pattern_3_output')
