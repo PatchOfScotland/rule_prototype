@@ -6,10 +6,10 @@ class Task:
         self.pattern = pattern
         self.recipe = recipe
         self.file = file
-        print('New Task Created')
-        print('pattern: ' + str(self.pattern))
-        print('recipe: ' + str(self.recipe))
-        print('file: ' + str(self.recipe))
+#        print('New Task Created')
+#        print('pattern: ' + str(self.pattern))
+#        print('recipe: ' + str(self.recipe))
+#        print('file: ' + str(self.recipe))
 
     def create_process(self):
         process = Process(self.recipe, self.pattern, self.file)

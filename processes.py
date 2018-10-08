@@ -57,7 +57,7 @@ def directory_monitor(directory_to_monitor, to_handler):
 def data_handler(from_directory_monitor, to_task_generator):
     while True:
         data_input = from_directory_monitor()
-#        print('Data handler received input: ' + data_input[1])
+        print('Data handler received input: ' + data_input[0] + '\\' + data_input[1])
         to_task_generator(data_input)
 
 
@@ -65,36 +65,42 @@ def data_handler(from_directory_monitor, to_task_generator):
 def pattern_handler(from_directory_monitor, to_task_generator):
     while True:
         pattern_input = from_directory_monitor()
-        print('Pattern handler received input: ' + pattern_input[1] + ' at ' + variables.time_stamp)
-        print('Complete pattern_input: ' + str(pattern_input))
-        print('pattern_input[0]: ' + str(pattern_input[0]))
-        print('pattern_input[1]: ' + str(pattern_input[1]))
-        print('our_path: ' + variables.our_path)
+        print('Pattern handler received input: ' + pattern_input[1])
+#        print('Complete pattern_input: ' + str(pattern_input))
+#        print('pattern_input[0]: ' + str(pattern_input[0]))
+#        print('pattern_input[1]: ' + str(pattern_input[1]))
+#        print('our_path: ' + variables.our_path)
         while True:
             try:
                 with open(variables.our_path + pattern_input[0] + pattern_input[1]) as input_file:
-                    print('opened: ' + variables.our_path + pattern_input[0] + pattern_input[1])
+#                    print('opened: ' + variables.our_path + pattern_input[0] + pattern_input[1])
                     raw_pattern = input_file.read()
                 input_file.close()
                 break
             except PermissionError:
                 print('Permission denied to open pattern file, will try again')
                 time.sleep(variables.retry_duration)
-        try:
-            print('raw_pattern: ' + str(raw_pattern))
-            pattern_dictionary = ast.literal_eval(raw_pattern)
-            recipe = pattern_dictionary['recipe'] + variables.recipe_extension
-            print('recipe_name: ' + recipe)
-            input_directory = pattern_dictionary['input_directory']
-            print('input_directory: ' + input_directory)
-            output_directory = pattern_dictionary['output_directory']
-            print('output_directory: ' + output_directory)
-            recipe_variables = pattern_dictionary['variables']
-            print('recipe_variables: ' + recipe_variables)
-            pattern = Pattern(recipe, input_directory, output_directory, recipe_variables)
-            to_task_generator(pattern)
-        except:
-            print('Something went wrong with parsing the pattern')
+#        try:
+#        print('raw_pattern: ' + str(raw_pattern))
+        pattern = variable_inclusive_pattern_parser(raw_pattern)
+#        pattern_dictionary = ast.literal_eval(raw_pattern)
+#        pattern_dictionary = ast.parse(raw_pattern, mode='eval')
+#         pattern_dictionary = json.loads(raw_pattern)
+#         print(type(pattern_dictionary))
+#         print(str(pattern_dictionary))
+#        print('keys: ' + str(pattern_dictionary.keys()))
+#        recipe = pattern_dictionary['recipe'] + variables.recipe_extension
+#        print('recipe_name: ' + pattern.recipe)
+#        input_directory = pattern_dictionary['input_directory']
+#        print('input_directory: ' + pattern.input_directory)
+#        output_directory = pattern_dictionary['output_directory']
+#        print('output_directory: ' + pattern.output_directory)
+#        recipe_variables = pattern_dictionary['variables']
+#        print('recipe_variables: ' + str(pattern.variables))
+#        pattern = Pattern(recipe, input_directory, output_directory, recipe_variables)
+        to_task_generator(pattern)
+#        except:
+#            print('Something went wrong with parsing the pattern')
 
 
 @process
@@ -131,36 +137,35 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
             InputGuard(from_data_handler)
         )
         if input_channel == from_pattern_handler:
-            print('~~~ Task Generator was notified by the pattern handler about: ' + str(message) + ' at ' + variables.time_stamp)
+            print('~~~ Task Generator was notified by the pattern handler about: ' + str(message))
             if message.get_pattern_name() in patterns:
                 patterns[message.get_pattern_name()] = message
                 print('~~~ Pattern was already present, has been updated')
             else:
                 patterns[message.get_pattern_name()] = message
-                print('~~~ Pattern is new, has been added (' + str(len(patterns)) + ') at ' + variables.time_stamp)
-                print('')
+                print('~~~ Pattern is new, has been added (' + str(len(patterns)) + ')')
             # print('pattern: ' + str(message))
             # print('pattern.recipe: ' + str(message.recipe))
             # print('pattern.input_directory: ' + str(message.input_directory))
             # print('pattern.output_directory: ' + str(message.output_directory))
             input_directory_contents = []
-            print('input_directory: ' + str(message.input_directory))
-            print('output_directory: ' + str(message.output_directory))
+#            print('input_directory: ' + str(message.input_directory))
+#            print('output_directory: ' + str(message.output_directory))
             recursive_search_to_list(message.input_directory, input_directory_contents)
             recipe = get_recipe(recipes, message)
-            print('input_directory_contents length: ' + str(len(input_directory_contents)))
-            print('recipe: ' + str(recipe))
+#            print('input_directory_contents length: ' + str(len(input_directory_contents)))
+#            print('recipe: ' + str(recipe))
             if recipe is not None:
                 for file in input_directory_contents:
                     task = Task(message, recipe, file[1])
-#                    print('new task sent to scheduler')
+                    print('new task sent to scheduler')
                     to_scheduler(task)
             else:
-                print('Required recipe does not exist yet')
+                print('Required recipe does not exist yet (I)')
         elif input_channel == from_recipe_handler:
             print('~~~ Task Generator was notified by the recipe handler about: ' + str(message))
 #            print('message: ' + str(message))
-#            print('message.name : ' + str(message.name))
+            print('message.name : ' + str(message.name))
             if message.name in recipes:
                 recipes[message.name] = message
                 print('~~~ Recipe was already present, has been updated')
@@ -190,7 +195,7 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
 #                    print('new task sent to scheduler')
                     to_scheduler(task)
                 else:
-                    print('Required recipe does not exist yet')
+                    print('Required recipe does not exist yet (II)')
 
 
 @process
@@ -216,11 +221,11 @@ def scheduler(from_task_generator, from_resources, to_resources):
             for index, buffered in enumerate(buffer):
                 if buffered.get_task_name() == message.get_task_name():
                     buffer[index] = message
-                    print('old task updated (' + str(len(buffer)) + ')')
+#                    print('old task updated (' + str(len(buffer)) + ')')
                     task_match = True
                     break
             if not task_match:
-                print('new task scheduled (' + str(len(buffer)) + ')')
+#                print('new task scheduled (' + str(len(buffer)) + ')')
                 buffer.append(message)
             for x in range(len(from_resources)):
                 pre_conditions[x] = True
@@ -232,7 +237,7 @@ def scheduler(from_task_generator, from_resources, to_resources):
                     i = a
             to_resources[i](buffer[0])
             del buffer[0]
-            print('task processed (' + str(len(buffer)) + ')')
+ #           print('task processed (' + str(len(buffer)) + ')')
             if len(buffer) == 0:
                 for x in range(len(from_resources)):
                     pre_conditions[x] = False
@@ -243,9 +248,9 @@ def resource(to_scheduler, from_scheduler):
     while True:
         to_scheduler(0)
         input_task = from_scheduler()
-        print('Resource got new task: ' + str(input_task))
+#        print('Resource got new task: ' + str(input_task))
         if not os.path.exists(input_task.pattern.output_directory):
             os.makedirs(input_task.pattern.output_directory)
         input_process = input_task.create_process()
-        print('Resource created new process: ' + str(input_process))
+#        print('Resource created new process: ' + str(input_process))
         input_process.process_file()

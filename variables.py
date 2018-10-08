@@ -67,18 +67,18 @@ initial_data = [
 initial_patterns = [
     {'recipe': 'recipe_0',
      'input_directory': initial_data_directory,
-     'output_directory': data_directory,
-     'variables': {}
+     'output_directory': data_directory + '\\pattern_0_output',
+     'variables': '{}'
      },
     {'recipe': 'recipe_1',
      'input_directory': initial_data_directory,
      'output_directory': data_directory + '\\pattern_1_output',
-     'variables': {}
+     'variables': '{}'
      },
     {'recipe': 'recipe_2',
      'input_directory': data_directory + '\\pattern_1_output',
      'output_directory': data_directory + '\\pattern_2_output',
-     'variables': {}
+     'variables': '{}'
      }
 ]
 

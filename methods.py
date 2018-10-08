@@ -1,5 +1,6 @@
 import os
 import variables
+from pattern import Pattern
 
 
 def get_path_details(complete_path):
@@ -10,12 +11,12 @@ def get_path_details(complete_path):
 
 
 def recursive_search_to_list(search_directory, file_list):
-    print('---')
-    print('Searching through : ' + search_directory)
+#    print('---')
+#    print('Searching through : ' + search_directory)
     if os.path.isdir(search_directory):
-        print('is a directory')
+#        print('is a directory')
         for file in os.listdir(search_directory):
-            print('found file: ' + str(file))
+#            print('found file: ' + str(file))
             file_path = search_directory + '\\' + file
             # If file is a directory then search in that as well
             if '.' not in file:
@@ -23,9 +24,9 @@ def recursive_search_to_list(search_directory, file_list):
             else:
                 path_details = get_path_details(file_path)
                 file_list.append(path_details)
-                print('file added')
-    else:
-        print('IS NOT A DIRECTORY')
+#                print('file added')
+#    else:
+#        print('IS NOT A DIRECTORY')
 
 
 def get_matching_patterns_by_recipe(all_patterns, recipe):
@@ -62,7 +63,7 @@ def get_recipe(all_recipes, pattern):
 #    print('pattern.recipe: ' + str(pattern.recipe))
 #    print('all recipes: :' + str(all_recipes))
     recipe_directory = variables.recipe_directory.replace(variables.our_path, '')
-    recipe_path = recipe_directory + '\\' + pattern.recipe
+    recipe_path = recipe_directory + '\\' + pattern.recipe + variables.recipe_extension
 #    print('recipe_directory: ' + recipe_directory)
 #    print('recipe_path: ' + recipe_path)
     for recipe in all_recipes:
@@ -70,4 +71,31 @@ def get_recipe(all_recipes, pattern):
         if all_recipes[recipe].name == recipe_path:
             return all_recipes[recipe]
     return None
+
+
+def variable_inclusive_pattern_parser(input_string):
+#    print('PARSING INPUT INTO PATTERN')
+#    print(input_string)
+    # check is intended as dictionary
+    if input_string[0] == '{' and input_string[len(input_string) - 1] == '}':
+        buffer_dictionary = {}
+#        print('Input is a dictionary')
+        dictionary_contents = input_string[1:len(input_string) - 1]
+#        print(dictionary_contents)
+        dictionary_key_value_pairs = dictionary_contents.split(', ')
+        for key_value_pair in dictionary_key_value_pairs:
+#            print(str(key_value_pair))
+            key_and_value = key_value_pair.split(': ')
+            # remove pesky quotation marks
+            for index, element in enumerate(key_and_value):
+                if (element[0] == '"' or element[0] == '\'') and (element[len(element) - 1] == '"' or element[len(element) - 1] == '\''):
+                    key_and_value[index] = element[1:len(element) - 1]
+#                    print(key_and_value[index])
+            buffer_dictionary[key_and_value[0]] = key_and_value[1]
+        if '\\\\' in buffer_dictionary['input_directory']:
+            buffer_dictionary['input_directory'] = buffer_dictionary['input_directory'].replace('\\\\', '\\')
+        if '\\\\' in buffer_dictionary['output_directory']:
+            buffer_dictionary['output_directory'] = buffer_dictionary['output_directory'].replace('\\\\', '\\')
+        return Pattern(buffer_dictionary['recipe'], buffer_dictionary['input_directory'], buffer_dictionary['output_directory'], buffer_dictionary['variables'])
+
 
