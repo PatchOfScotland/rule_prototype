@@ -8,7 +8,7 @@ from task import Task
 from pycsp.parallel import *
 from methods import *
 
-
+# In the unlikely occurrence of multiple events at once, only a single one will be detected. This may be a problem unique to win32, or may also be the case in other operating systems
 @process
 def directory_monitor(directory_to_monitor, to_handler):
 
@@ -47,6 +47,7 @@ def directory_monitor(directory_to_monitor, to_handler):
             None
         )
         for action, file in results:
+#            print('Seen something (action: ' + str(action) + ') (file: ' + str(file))
             if action in variables.actions:
                 print('Seen an event (' + str(variables.actions.get(action)) + ') and sending it on to the handler: ' + file)
                 path_details = get_path_details(directory_to_monitor + '\\' + file)
@@ -72,7 +73,7 @@ def pattern_handler(from_directory_monitor, to_task_generator):
 #        print('our_path: ' + variables.our_path)
         while True:
             try:
-                with open(variables.our_path + pattern_input[0] + pattern_input[1]) as input_file:
+                with open(variables.pattern_path + pattern_input[0] + pattern_input[1]) as input_file:
 #                    print('opened: ' + variables.our_path + pattern_input[0] + pattern_input[1])
                     raw_pattern = input_file.read()
                 input_file.close()
@@ -82,22 +83,22 @@ def pattern_handler(from_directory_monitor, to_task_generator):
                 time.sleep(variables.retry_duration)
 #        try:
 #        print('raw_pattern: ' + str(raw_pattern))
-        pattern = variable_inclusive_pattern_parser(raw_pattern)
-#        pattern_dictionary = ast.literal_eval(raw_pattern)
+#        pattern = variable_inclusive_pattern_parser(raw_pattern)
+        pattern_dictionary = ast.literal_eval(raw_pattern)
 #        pattern_dictionary = ast.parse(raw_pattern, mode='eval')
 #         pattern_dictionary = json.loads(raw_pattern)
-#         print(type(pattern_dictionary))
-#         print(str(pattern_dictionary))
-#        print('keys: ' + str(pattern_dictionary.keys()))
-#        recipe = pattern_dictionary['recipe'] + variables.recipe_extension
-#        print('recipe_name: ' + pattern.recipe)
-#        input_directory = pattern_dictionary['input_directory']
-#        print('input_directory: ' + pattern.input_directory)
-#        output_directory = pattern_dictionary['output_directory']
-#        print('output_directory: ' + pattern.output_directory)
-#        recipe_variables = pattern_dictionary['variables']
-#        print('recipe_variables: ' + str(pattern.variables))
-#        pattern = Pattern(recipe, input_directory, output_directory, recipe_variables)
+        print(type(pattern_dictionary))
+        print(str(pattern_dictionary))
+        print('keys: ' + str(pattern_dictionary.keys()))
+        recipe = pattern_dictionary['recipe'] + variables.recipe_extension
+        print('recipe_name: ' + recipe)
+        input_directory = variables.data_path + pattern_dictionary['input_directory']
+        print('input_directory: ' + input_directory)
+        output_directory = variables.data_path + pattern_dictionary['output_directory']
+        print('output_directory: ' + output_directory)
+        recipe_variables = pattern_dictionary['variables']
+        print('recipe_variables: ' + str(variables))
+        pattern = Pattern(recipe, input_directory, output_directory, recipe_variables)
         to_task_generator(pattern)
 #        except:
 #            print('Something went wrong with parsing the pattern')
@@ -111,7 +112,7 @@ def recipe_handler(from_directory_monitor, to_task_generator):
         while True:
             try:
                 complete_process = ''
-                with open(variables.our_path + recipe_input[0] + recipe_input[1]) as input_file:
+                with open(variables.recipe_path + recipe_input[0] + recipe_input[1]) as input_file:
                     for line in input_file:
                         complete_process += line
                 input_file.close()
@@ -136,6 +137,7 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
             InputGuard(from_recipe_handler),
             InputGuard(from_data_handler)
         )
+
         if input_channel == from_pattern_handler:
             print('~~~ Task Generator was notified by the pattern handler about: ' + str(message))
             if message.get_pattern_name() in patterns:
@@ -156,12 +158,15 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
 #            print('input_directory_contents length: ' + str(len(input_directory_contents)))
 #            print('recipe: ' + str(recipe))
             if recipe is not None:
+                if len(input_directory_contents) == 0:
+                    print('Nothing in ' + message.input_directory)
                 for file in input_directory_contents:
                     task = Task(message, recipe, file[1])
                     print('new task sent to scheduler')
                     to_scheduler(task)
             else:
                 print('Required recipe does not exist yet (I)')
+
         elif input_channel == from_recipe_handler:
             print('~~~ Task Generator was notified by the recipe handler about: ' + str(message))
 #            print('message: ' + str(message))
@@ -180,6 +185,7 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
                     task = Task(pattern, message, file[1])
 #                    print('new task sent to scheduler')
                     to_scheduler(task)
+
         elif input_channel == from_data_handler:
             print('~~~ Task Generator was notified by the data handler about: ' + str(message))
             input_file = message[1]
@@ -187,7 +193,7 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
             # # if there is some intermediate directory
             # if '\\' in input_file:
             #     input_directory = input_directory + '\\' + input_file[:input_file.rfind('\\')]
-            matching_patterns = get_matching_patterns_by_input(patterns, variables.our_path + input_directory)
+            matching_patterns = get_matching_patterns_by_input(patterns, variables.data_path + input_directory)
             for pattern in matching_patterns:
                 recipe = get_recipe(recipes, pattern)
                 if recipe is not None:
@@ -221,11 +227,11 @@ def scheduler(from_task_generator, from_resources, to_resources):
             for index, buffered in enumerate(buffer):
                 if buffered.get_task_name() == message.get_task_name():
                     buffer[index] = message
-#                    print('old task updated (' + str(len(buffer)) + ')')
+                    print('old task updated (' + str(len(buffer)) + ')')
                     task_match = True
                     break
             if not task_match:
-#                print('new task scheduled (' + str(len(buffer)) + ')')
+                print('new task scheduled (' + str(len(buffer)) + ')')
                 buffer.append(message)
             for x in range(len(from_resources)):
                 pre_conditions[x] = True
@@ -237,7 +243,7 @@ def scheduler(from_task_generator, from_resources, to_resources):
                     i = a
             to_resources[i](buffer[0])
             del buffer[0]
- #           print('task processed (' + str(len(buffer)) + ')')
+            print('task processed (' + str(len(buffer)) + ')')
             if len(buffer) == 0:
                 for x in range(len(from_resources)):
                     pre_conditions[x] = False

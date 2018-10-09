@@ -1,1 +1,1 @@
-{'recipe': 'recipe_5', 'input_directory': variables.initial_data_directory + '\\pattern_4_output', 'output_directory': variables.data_directory + '\\pattern_5_output', 'variables': {}}
+{'recipe': 'recipe_5', 'input_directory': '\\pattern_4_output', 'output_directory': '\\pattern_5_output', 'variables': {}}

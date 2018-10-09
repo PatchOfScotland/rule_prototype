@@ -4,7 +4,9 @@ from pattern import Pattern
 
 
 def get_path_details(complete_path):
-    path_buffer = complete_path.replace(variables.our_path, '')
+    path_buffer = complete_path.replace(variables.pattern_path, '')
+    path_buffer = path_buffer.replace(variables.data_path, '')
+    path_buffer = path_buffer.replace(variables.recipe_path, '')
     directory_path = path_buffer[:path_buffer.rfind('\\')]
     file = path_buffer[path_buffer.rfind('\\'):]
     return (directory_path, file)
@@ -46,28 +48,26 @@ def get_matching_patterns_by_recipe(all_patterns, recipe):
 
 
 def get_matching_patterns_by_input(all_patterns, directory):
-#    print('finding matching pattern...')
-#    print('all_patterns: ' + str(all_patterns))
-#    print('directory: ' + directory)
+    print('finding matching pattern...')
+    print('all_patterns: ' + str(all_patterns))
+    print('directory: ' + directory)
     matching_patterns = []
     for pattern in all_patterns:
-#        print('pattern input_directory: ' + str(all_patterns[pattern].input_directory))
+        print('pattern input_directory: ' + str(all_patterns[pattern].input_directory))
         if all_patterns[pattern].input_directory == directory:
             matching_patterns.append(all_patterns[pattern])
-#    print('matching_patterns: ' + str(matching_patterns))
+    print('matching_patterns: ' + str(matching_patterns))
     return matching_patterns
 
 
 def get_recipe(all_recipes, pattern):
-#    print('finding recipe...')
-#    print('pattern.recipe: ' + str(pattern.recipe))
-#    print('all recipes: :' + str(all_recipes))
-    recipe_directory = variables.recipe_directory.replace(variables.our_path, '')
-    recipe_path = recipe_directory + '\\' + pattern.recipe + variables.recipe_extension
-#    print('recipe_directory: ' + recipe_directory)
-#    print('recipe_path: ' + recipe_path)
+    print('finding recipe...')
+    print('pattern.recipe: ' + str(pattern.recipe))
+    print('all recipes: :' + str(all_recipes))
+    recipe_path = '\\' + pattern.recipe
+    print('recipe_path: ' + recipe_path)
     for recipe in all_recipes:
-#        print('recipe: ' + str(all_recipes[recipe].name))
+        print('recipe: ' + str(all_recipes[recipe].name))
         if all_recipes[recipe].name == recipe_path:
             return all_recipes[recipe]
     return None
@@ -92,10 +92,38 @@ def variable_inclusive_pattern_parser(input_string):
                     key_and_value[index] = element[1:len(element) - 1]
 #                    print(key_and_value[index])
             buffer_dictionary[key_and_value[0]] = key_and_value[1]
-        if '\\\\' in buffer_dictionary['input_directory']:
-            buffer_dictionary['input_directory'] = buffer_dictionary['input_directory'].replace('\\\\', '\\')
-        if '\\\\' in buffer_dictionary['output_directory']:
-            buffer_dictionary['output_directory'] = buffer_dictionary['output_directory'].replace('\\\\', '\\')
-        return Pattern(buffer_dictionary['recipe'], buffer_dictionary['input_directory'], buffer_dictionary['output_directory'], buffer_dictionary['variables'])
+
+        input_directory = buffer_dictionary['input_directory']
+        output_directory = buffer_dictionary['output_directory']
+        if '\\\\' in input_directory:
+            input_directory = input_directory.replace('\\\\', '\\')
+        if '\\\\' in output_directory:
+            output_directory = output_directory.replace('\\\\', '\\')
+        print('}{ input_directory: ' + str(input_directory))
+        print('}{ output_directory: ' + str(output_directory))
+        # crude hack for if is code to be executed. Improve this
+        # TODO replace all this with different way of defining input directories. perhaps assume they are always within the projcet directory and appending the front end within the program
+        if ' + ' in input_directory:
+            input_directory_buffer = ''
+            parts = input_directory.split(' + ')
+            for part in parts:
+                if part[0] == '\'':
+                    input_directory_buffer = input_directory_buffer + part[1:len(part) - 1]
+                else:
+                    # expand this beyond variables two deep maybe?
+                    elements = part.split('.')
+                    input_directory_buffer = input_directory_buffer + locals()[elements[0]]
+        # crude hack for if is code to be executed. Improve this
+        if ' + ' in output_directory:
+            output_directory_buffer = ''
+            parts = output_directory.split(' + ')
+            for part in parts:
+                if part[0] == '\'':
+                    output_directory_buffer = output_directory_buffer + part[1:len(part) - 1]
+                else:
+                    output_directory_buffer = output_directory_buffer + locals()[part]
+        print('}{ input_directory: ' + str(input_directory))
+        print('}{ output_directory: ' + str(output_directory))
+        return Pattern(buffer_dictionary['recipe'], input_directory, output_directory, buffer_dictionary['variables'])
 
 

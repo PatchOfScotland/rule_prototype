@@ -2,20 +2,26 @@ import os
 import time
 
 number_of_resources = 3
+# note that if this is set to zero then events start getting lost. This may be caused by the operating system overwriting events if they occur to close together, or may be something else entirely.
 processing_time = 1
 retry_duration = 1
 
 time_stamp = str(time.time())
 our_path = os.path.abspath('.') + '\\demo\\' + time_stamp
-recipe_directory = our_path + '\\recipes'
-pattern_directory = our_path + '\\patterns'
-data_directory = our_path + '\\data'
-initial_data_directory = data_directory + '\\initial_data'
+recipe_directory = '\\recipes'
+pattern_directory = '\\patterns'
+data_directory = '\\data'
+initial_data_directory = '\\initial_data'
+recipe_path = our_path + recipe_directory
+pattern_path = our_path + pattern_directory
+data_path = our_path + data_directory
+initial_data_path = our_path + data_directory + initial_data_directory
 
 recipe_extension = '.txt'
 pattern_extension = '.txt.'
 data_extension = '.txt'
 
+# used to populate system with data for testing purposes
 initial_recipes = [
     [
         "import time",
@@ -55,6 +61,7 @@ initial_recipes = [
     ]
 ]
 
+# used to populate system with data for testing purposes
 initial_data = [
     'This is the initial state of the first data file.\n',
     'This is the initial state of the second data file.\n',
@@ -64,20 +71,21 @@ initial_data = [
     'This is the initial state of the sixth data file.\n'
 ]
 
+# used to populate system with data for testing purposes
 initial_patterns = [
     {'recipe': 'recipe_0',
      'input_directory': initial_data_directory,
-     'output_directory': data_directory + '\\pattern_0_output',
+     'output_directory': '\\pattern_0_output',
      'variables': '{}'
      },
     {'recipe': 'recipe_1',
      'input_directory': initial_data_directory,
-     'output_directory': data_directory + '\\pattern_1_output',
+     'output_directory': '\\pattern_1_output',
      'variables': '{}'
      },
     {'recipe': 'recipe_2',
-     'input_directory': data_directory + '\\pattern_1_output',
-     'output_directory': data_directory + '\\pattern_2_output',
+     'input_directory': '\\pattern_1_output',
+     'output_directory': '\\pattern_2_output',
      'variables': '{}'
      }
 ]
