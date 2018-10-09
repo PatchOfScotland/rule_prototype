@@ -1,0 +1,21 @@
+<pattern> ::= <recipe> <input-directory> <output-directory> <event-filter> <file-type-filter> <variables>
+
+<recipe> ::= "some/recipe.file" 
+
+<input-directory> ::= <directory>
+					
+<output-directory> ::= <directory> 
+
+<data-type> ::= ".some_data_type"
+
+<directory> ::= "some/directory/location" 			
+
+<event-filter> ::= "Old"
+				 | "New"
+			     | "All"
+
+<file-type-filter> ::= {<data-type>}
+
+<variables> ::= {<variable>}
+
+<variable> ::= "some_variable = some_value"

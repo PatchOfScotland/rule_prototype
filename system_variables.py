@@ -21,7 +21,7 @@ recipe_extension = '.txt'
 pattern_extension = '.txt.'
 data_extension = '.txt'
 
-# These may want to be changed later to be a more expandable system
+# This may want to be changed later to be a more expandable system
 initial_file_descriptor = 'Old'
 new_file_event_descriptor = 'New'
 all_files_descriptor = 'All'
