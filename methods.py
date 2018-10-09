@@ -10,6 +10,20 @@ def file_is_in_filter(file_type_filter, file):
     return False
 
 
+def event_is_in_filter(event_filter, event):
+    print('Testing event filter')
+    print('event_filter: ' + event_filter)
+    print('event: ' + event)
+    if event_filter == system_variables.all_files_descriptor:
+        print('TRUE')
+        return True
+    if event_filter == event:
+        print('TRUE')
+        return True
+    print('FALSE')
+    return False
+
+
 def get_path_details(complete_path):
     path_buffer = complete_path.replace(system_variables.pattern_path, '')
     path_buffer = path_buffer.replace(system_variables.data_path, '')
@@ -39,18 +53,17 @@ def recursive_search_to_list(search_directory, file_list):
 
 
 def get_matching_patterns_by_recipe(all_patterns, recipe):
-#    print('finding matching pattern...')
-#    print('all_patterns: ' + str(all_patterns))
-#    print('recipe: ' + str(recipe))
-#    print('recipe.name: ' + str(recipe.name))
-    recipe_directory = system_variables.recipe_directory.replace(system_variables.our_path, '')
+    print('finding matching pattern...')
+    print('all_patterns: ' + str(all_patterns))
+    print('recipe: ' + str(recipe))
+    print('recipe.name: ' + str(recipe.name))
     matching_patterns = []
     for pattern in all_patterns:
-#        print('pattern recipe: ' + str(all_patterns[pattern].recipe))
-        recipe_path = recipe_directory + '\\' + all_patterns[pattern].recipe
+        print('pattern recipe: ' + str(all_patterns[pattern].recipe))
+        recipe_path = '\\' + all_patterns[pattern].recipe
         if recipe_path == recipe.name:
             matching_patterns.append(all_patterns[pattern])
-#    print('matching_patterns: ' + str(matching_patterns))
+    print('matching_patterns: ' + str(matching_patterns))
     return matching_patterns
 
 

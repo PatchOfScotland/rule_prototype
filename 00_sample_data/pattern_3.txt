@@ -1,1 +1,1 @@
-{'recipe': 'recipe_3', 'input_directory': '\\initial_data', 'output_directory': '\\pattern_3_output', 'filter': [], 'variables': {}}
+{'recipe': 'recipe_3', 'input_directory': '\\initial_data', 'output_directory': '\\pattern_3_output', 'type_filter': ['.txt'], 'event_filter': 'All', 'variables': {'processing_time': 1}}

@@ -21,6 +21,15 @@ recipe_extension = '.txt'
 pattern_extension = '.txt.'
 data_extension = '.txt'
 
+# These may want to be changed later to be a more expandable system
+initial_file_descriptor = 'Old'
+new_file_event_descriptor = 'New'
+all_files_descriptor = 'All'
+pattern_events = [
+    initial_file_descriptor,
+    new_file_event_descriptor
+]
+
 # used to populate system with data for testing purposes
 initial_recipes = [
     [
@@ -74,9 +83,10 @@ initial_patterns = [
     {'recipe': 'recipe_0',
      'input_directory': initial_data_directory,
      'output_directory': '\\pattern_0_output',
-     'filter': [
+     'type_filter': [
          data_extension
         ],
+     'event_filter': all_files_descriptor,
      'variables': {
          'processing_time': processing_time
         }
@@ -84,9 +94,10 @@ initial_patterns = [
     {'recipe': 'recipe_1',
      'input_directory': initial_data_directory,
      'output_directory': '\\pattern_1_output',
-     'filter': [
+     'type_filter': [
          data_extension
         ],
+     'event_filter': initial_file_descriptor,
      'variables': {
          'processing_time': processing_time
         }
@@ -94,9 +105,10 @@ initial_patterns = [
     {'recipe': 'recipe_2',
      'input_directory': '\\pattern_1_output',
      'output_directory': '\\pattern_2_output',
-     'filter': [
+     'type_filter': [
          data_extension
         ],
+     'event_filter': new_file_event_descriptor,
      'variables': {
          'processing_time': processing_time,
          'var_a': 867,
