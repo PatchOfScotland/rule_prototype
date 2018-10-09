@@ -2,8 +2,6 @@ from processes import *
 import system_variables
 
 
-# TODO properly test that variables are working
-# TODO implement a filter on file types being scheduled
 if __name__ == '__main__':
     print('timestamp for this run: ' + str(system_variables.time_stamp))
 

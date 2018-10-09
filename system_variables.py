@@ -25,37 +25,34 @@ data_extension = '.txt'
 initial_recipes = [
     [
         "import time",
-        "import system_variables",
         "input_file = open(self.input_file, 'r')",
         "data = input_file.read()",
         "input_file.close()",
         "data += 'processed by ' + self.name + '\\n'",
-        "time.sleep(system_variables.processing_time)",
+        "time.sleep(processing_time)",
         "output_file = open(self.output_file, 'w')",
         "output_file.write(data)",
         "output_file.close()"
     ],
     [
         "import time",
-        "import system_variables",
         "input_file = open(self.input_file, 'r')",
         "data = input_file.read()",
         "input_file.close()",
         "data += 'processed by ' + self.name + '\\n'",
-        "time.sleep(system_variables.processing_time)",
+        "time.sleep(processing_time)",
         "output_file = open(self.output_file, 'w')",
         "output_file.write(data)",
         "output_file.close()"
     ],
     [
         "import time",
-        "import system_variables",
         "input_file = open(self.input_file, 'r')",
         "data = input_file.read()",
         "input_file.close()",
         "data += 'processed by ' + self.name + '\\n'",
-        "data += str(var_a) + ' ' + str(var_b) + '\\n'",
-        "time.sleep(system_variables.processing_time)",
+        "data += str(var_a) + ', ' + str(var_b) + ', ' + str(var_c) + ', ' + str(var_d) +'\\n'",
+        "time.sleep(processing_time)",
         "output_file = open(self.output_file, 'w')",
         "output_file.write(data)",
         "output_file.close()"
@@ -77,24 +74,31 @@ initial_patterns = [
     {'recipe': 'recipe_0',
      'input_directory': initial_data_directory,
      'output_directory': '\\pattern_0_output',
-     'filter': {},
+     'filter': [
+         data_extension
+        ],
      'variables': {
-
+         'processing_time': processing_time
         }
      },
     {'recipe': 'recipe_1',
      'input_directory': initial_data_directory,
      'output_directory': '\\pattern_1_output',
-     'filter': {},
+     'filter': [
+         data_extension
+        ],
      'variables': {
-
+         'processing_time': processing_time
         }
      },
     {'recipe': 'recipe_2',
      'input_directory': '\\pattern_1_output',
      'output_directory': '\\pattern_2_output',
-     'filter': {},
+     'filter': [
+         data_extension
+        ],
      'variables': {
+         'processing_time': processing_time,
          'var_a': 867,
          'var_b': 1444,
          'var_c': 1936,

@@ -3,6 +3,13 @@ import system_variables
 from pattern import Pattern
 
 
+def file_is_in_filter(file_type_filter, file):
+    file_type = file[file.rfind('.'):]
+    if file_type in file_type_filter:
+        return True
+    return False
+
+
 def get_path_details(complete_path):
     path_buffer = complete_path.replace(system_variables.pattern_path, '')
     path_buffer = path_buffer.replace(system_variables.data_path, '')

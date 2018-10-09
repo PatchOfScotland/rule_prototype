@@ -163,9 +163,10 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
                 if len(input_directory_contents) == 0:
                     print('Nothing in ' + message.input_directory)
                 for file in input_directory_contents:
-                    task = Task(message, recipe, file[1])
-                    print('new task sent to scheduler')
-                    to_scheduler(task)
+                    if file_is_in_filter(message.file_type_filter, file[1]):
+                        task = Task(message, recipe, file[1])
+                        print('new task sent to scheduler')
+                        to_scheduler(task)
             else:
                 print('Required recipe does not exist yet (I)')
 
@@ -184,9 +185,10 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
                 input_directory_contents = []
                 recursive_search_to_list(pattern.input_directory, input_directory_contents)
                 for file in input_directory_contents:
-                    task = Task(pattern, message, file[1])
-#                    print('new task sent to scheduler')
-                    to_scheduler(task)
+                    if file_is_in_filter(pattern.file_type_filter, file[1]):
+                        task = Task(pattern, message, file[1])
+#                        print('new task sent to scheduler')
+                        to_scheduler(task)
 
         elif input_channel == from_data_handler:
             print('~~~ Task Generator was notified by the data handler about: ' + str(message))
@@ -199,9 +201,10 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
             for pattern in matching_patterns:
                 recipe = get_recipe(recipes, pattern)
                 if recipe is not None:
-                    task = Task(pattern, recipe, input_file)
-#                    print('new task sent to scheduler')
-                    to_scheduler(task)
+                    if file_is_in_filter(pattern.file_type_filter, input_file):
+                        task = Task(pattern, recipe, input_file)
+#                        print('new task sent to scheduler')
+                        to_scheduler(task)
                 else:
                     print('Required recipe does not exist yet (II)')
 
