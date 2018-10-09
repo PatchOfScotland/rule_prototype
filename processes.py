@@ -96,9 +96,11 @@ def pattern_handler(from_directory_monitor, to_task_generator):
         print('input_directory: ' + input_directory)
         output_directory = variables.data_path + pattern_dictionary['output_directory']
         print('output_directory: ' + output_directory)
+        filter = pattern_dictionary['filter']
+        print('filter: ' + str(filter))
         recipe_variables = pattern_dictionary['variables']
         print('recipe_variables: ' + str(variables))
-        pattern = Pattern(recipe, input_directory, output_directory, recipe_variables)
+        pattern = Pattern(recipe, input_directory, output_directory, filter, recipe_variables)
         to_task_generator(pattern)
 #        except:
 #            print('Something went wrong with parsing the pattern')
