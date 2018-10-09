@@ -1,11 +1,11 @@
 
 class Pattern:
-    def __init__(self, recipe, input_directory, output_directory, filter, variables):
+    def __init__(self, recipe, input_directory, output_directory, file_type_filter, variables):
         self.recipe = recipe
         self.variables = variables
         self.input_directory = input_directory
         self.output_directory = output_directory
-        self.filter = filter
+        self.file_type_filter = file_type_filter
 
     # gives unique pattern name. Is currently ugly as sin, possibly come back to this and improve
     def get_pattern_name(self):

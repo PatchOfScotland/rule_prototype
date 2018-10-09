@@ -1,12 +1,12 @@
 import os
-import variables
+import system_variables
 from pattern import Pattern
 
 
 def get_path_details(complete_path):
-    path_buffer = complete_path.replace(variables.pattern_path, '')
-    path_buffer = path_buffer.replace(variables.data_path, '')
-    path_buffer = path_buffer.replace(variables.recipe_path, '')
+    path_buffer = complete_path.replace(system_variables.pattern_path, '')
+    path_buffer = path_buffer.replace(system_variables.data_path, '')
+    path_buffer = path_buffer.replace(system_variables.recipe_path, '')
     directory_path = path_buffer[:path_buffer.rfind('\\')]
     file = path_buffer[path_buffer.rfind('\\'):]
     return (directory_path, file)
@@ -36,7 +36,7 @@ def get_matching_patterns_by_recipe(all_patterns, recipe):
 #    print('all_patterns: ' + str(all_patterns))
 #    print('recipe: ' + str(recipe))
 #    print('recipe.name: ' + str(recipe.name))
-    recipe_directory = variables.recipe_directory.replace(variables.our_path, '')
+    recipe_directory = system_variables.recipe_directory.replace(system_variables.our_path, '')
     matching_patterns = []
     for pattern in all_patterns:
 #        print('pattern recipe: ' + str(all_patterns[pattern].recipe))

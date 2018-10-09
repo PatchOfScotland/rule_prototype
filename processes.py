@@ -48,8 +48,8 @@ def directory_monitor(directory_to_monitor, to_handler):
         )
         for action, file in results:
 #            print('Seen something (action: ' + str(action) + ') (file: ' + str(file))
-            if action in variables.actions:
-                print('Seen an event (' + str(variables.actions.get(action)) + ') and sending it on to the handler: ' + file)
+            if action in system_variables.actions:
+                print('Seen an event (' + str(system_variables.actions.get(action)) + ') and sending it on to the handler: ' + file)
                 path_details = get_path_details(directory_to_monitor + '\\' + file)
                 to_handler(path_details)
 
@@ -73,14 +73,14 @@ def pattern_handler(from_directory_monitor, to_task_generator):
 #        print('our_path: ' + variables.our_path)
         while True:
             try:
-                with open(variables.pattern_path + pattern_input[0] + pattern_input[1]) as input_file:
+                with open(system_variables.pattern_path + pattern_input[0] + pattern_input[1]) as input_file:
 #                    print('opened: ' + variables.our_path + pattern_input[0] + pattern_input[1])
                     raw_pattern = input_file.read()
                 input_file.close()
                 break
             except PermissionError:
                 print('Permission denied to open pattern file, will try again')
-                time.sleep(variables.retry_duration)
+                time.sleep(system_variables.retry_duration)
 #        try:
 #        print('raw_pattern: ' + str(raw_pattern))
 #        pattern = variable_inclusive_pattern_parser(raw_pattern)
@@ -90,17 +90,17 @@ def pattern_handler(from_directory_monitor, to_task_generator):
         print(type(pattern_dictionary))
         print(str(pattern_dictionary))
         print('keys: ' + str(pattern_dictionary.keys()))
-        recipe = pattern_dictionary['recipe'] + variables.recipe_extension
+        recipe = pattern_dictionary['recipe'] + system_variables.recipe_extension
         print('recipe_name: ' + recipe)
-        input_directory = variables.data_path + pattern_dictionary['input_directory']
+        input_directory = system_variables.data_path + pattern_dictionary['input_directory']
         print('input_directory: ' + input_directory)
-        output_directory = variables.data_path + pattern_dictionary['output_directory']
+        output_directory = system_variables.data_path + pattern_dictionary['output_directory']
         print('output_directory: ' + output_directory)
-        filter = pattern_dictionary['filter']
-        print('filter: ' + str(filter))
+        file_type_filter = pattern_dictionary['filter']
+        print('filter: ' + str(file_type_filter))
         recipe_variables = pattern_dictionary['variables']
-        print('recipe_variables: ' + str(variables))
-        pattern = Pattern(recipe, input_directory, output_directory, filter, recipe_variables)
+        print('recipe_variables: ' + str(system_variables))
+        pattern = Pattern(recipe, input_directory, output_directory, file_type_filter, recipe_variables)
         to_task_generator(pattern)
 #        except:
 #            print('Something went wrong with parsing the pattern')
@@ -114,14 +114,14 @@ def recipe_handler(from_directory_monitor, to_task_generator):
         while True:
             try:
                 complete_process = ''
-                with open(variables.recipe_path + recipe_input[0] + recipe_input[1]) as input_file:
+                with open(system_variables.recipe_path + recipe_input[0] + recipe_input[1]) as input_file:
                     for line in input_file:
                         complete_process += line
                 input_file.close()
                 break
             except PermissionError:
                 print('Permission denied to open recipe file, will try again')
-                time.sleep(variables.retry_duration)
+                time.sleep(system_variables.retry_duration)
         try:
             recipe = Recipe(recipe_input[0] + recipe_input[1], complete_process)
             to_task_generator(recipe)
@@ -195,7 +195,7 @@ def task_generator(from_data_handler, from_pattern_handler, from_recipe_handler,
             # # if there is some intermediate directory
             # if '\\' in input_file:
             #     input_directory = input_directory + '\\' + input_file[:input_file.rfind('\\')]
-            matching_patterns = get_matching_patterns_by_input(patterns, variables.data_path + input_directory)
+            matching_patterns = get_matching_patterns_by_input(patterns, system_variables.data_path + input_directory)
             for pattern in matching_patterns:
                 recipe = get_recipe(recipes, pattern)
                 if recipe is not None:
