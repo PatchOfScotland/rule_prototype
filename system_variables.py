@@ -1,6 +1,12 @@
 import os
 import time
 
+NONE = 0
+PARTIAL = 1
+FULL = 2
+
+debug_mode = PARTIAL
+
 number_of_resources = 3
 # note that if this is set to zero then events start getting lost. This may be caused by the operating system overwriting events if they occur to close together, or may be something else entirely.
 processing_time = 1

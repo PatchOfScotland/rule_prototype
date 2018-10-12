@@ -3,14 +3,14 @@ import system_variables
 
 
 if __name__ == '__main__':
-    print('timestamp for this run: ' + str(system_variables.time_stamp))
+    partial_debug('timestamp for this run: ' + str(system_variables.time_stamp))
 
     if not os.path.exists(system_variables.our_path):
         os.makedirs(system_variables.initial_data_path)
         os.makedirs(system_variables.recipe_path)
         os.makedirs(system_variables.pattern_path)
     else:
-        print('Path already exists, exiting')
+        partial_debug('Path already exists, exiting')
         exit()
     for count, recipe in enumerate(system_variables.initial_recipes):
         recipe_file = open(system_variables.recipe_path + '\\recipe_' + str(count) + system_variables.recipe_extension, 'w')
@@ -26,7 +26,7 @@ if __name__ == '__main__':
         pattern_file.write(str(pattern))
         pattern_file.close()
 
-    print('Initial setup complete')
+    partial_debug('Initial setup complete')
 
     pattern_monitor_to_handler = Channel()
     pattern_handler_to_task_generator = Channel()

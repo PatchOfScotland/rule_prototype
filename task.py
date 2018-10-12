@@ -1,4 +1,5 @@
 from process import Process
+from methods import full_debug
 
 
 class Task:
@@ -6,10 +7,10 @@ class Task:
         self.pattern = pattern
         self.recipe = recipe
         self.file = file
-#        print('New Task Created')
-#        print('pattern: ' + str(self.pattern))
-#        print('recipe: ' + str(self.recipe))
-#        print('file: ' + str(self.recipe))
+        full_debug('New Task Created')
+        full_debug('pattern: ' + str(self.pattern))
+        full_debug('recipe: ' + str(self.recipe))
+        full_debug('file: ' + str(self.recipe))
 
     def create_process(self):
         process = Process(self.recipe, self.pattern, self.file)
