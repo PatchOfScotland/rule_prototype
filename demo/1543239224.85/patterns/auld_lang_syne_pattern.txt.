@@ -21,7 +21,9 @@
 			'chorus.txt',
 			'verse_5.txt',
 			'chorus.txt',
-		]
+		],
+		'output_file_name': 
+			"completed_auld_lang_syne.txt"
 	}, 
 	'type_filter': 
 	[

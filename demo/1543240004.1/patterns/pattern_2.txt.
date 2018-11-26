@@ -1,0 +1,1 @@
+{'input_directories': ['/pattern_0_output'], 'recipes': ['recipe_2'], 'variables': {'processing_time': 1, 'var_d': 2100, 'var_c': 1936, 'var_b': 1444, 'var_a': 867}, 'type_filter': ['.txt'], 'output_directory': '/pattern_2_output'}
