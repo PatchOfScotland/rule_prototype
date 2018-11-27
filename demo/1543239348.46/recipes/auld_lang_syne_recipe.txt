@@ -1,9 +1,0 @@
-song = ''
-for file_name in necessary_files:
-	input_file = open(self.input_directory + '/' + file_name, 'r')
-	song += input_file.read()
-	song += '\n'
-	input_file.close()
-output_file = open(self.output_directory +'/auld_lang_syne', 'w')
-output_file.write(song)
-output_file.close()

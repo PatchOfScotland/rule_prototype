@@ -1,2 +1,0 @@
-This is the initial state of the third data file.
-processed by /recipe_0.txt

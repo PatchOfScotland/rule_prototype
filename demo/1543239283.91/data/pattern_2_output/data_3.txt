@@ -1,4 +1,0 @@
-This is the initial state of the fourth data file.
-processed by /recipe_0.txt
-processed by /recipe_2.txt
-867, 1444, 1936, 2100

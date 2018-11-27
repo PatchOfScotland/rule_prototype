@@ -4,6 +4,6 @@ for file_name in necessary_files:
 	song += input_file.read()
 	song += '\n'
 	input_file.close()
-output_file = open(self.output_directory +'/auld_lang_syne', 'w')
+output_file = open(self.output_directory + '/' + completed_song_file, 'w')
 output_file.write(song)
 output_file.close()

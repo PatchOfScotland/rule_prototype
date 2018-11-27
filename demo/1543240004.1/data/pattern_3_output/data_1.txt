@@ -1,2 +1,0 @@
-This is the initial state of the second data file.
-processed by /recipe_3.txt_/recipe_5.txt_/recipe_4.txt

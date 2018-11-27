@@ -1,4 +1,0 @@
-import time
-input_file = open(self.input_file, 'r')
-data = input_file.read()
-input_file.close()

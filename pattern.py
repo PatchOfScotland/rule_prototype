@@ -18,6 +18,7 @@ class Pattern:
         full_debug('Creating new pattern')
         full_debug('Input directories:' + str(self.input_directories))
         full_debug('Output directory:' + str(self.output_directory))
+        full_debug('Variables: ' + str(self.variables))
 
     def __eq__(self, other):
         if not isinstance(other, Pattern):

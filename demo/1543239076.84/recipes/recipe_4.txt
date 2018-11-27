@@ -1,3 +1,0 @@
-output_file = open(self.output_file, 'w')
-output_file.write(data)
-output_file.close()
