@@ -25,13 +25,12 @@ class Pattern:
             return False
 
         if (self.recipes == other.recipes) and \
-            (self.input_directories == other.input_directories) and \
-            (self.output_directory == other.output_directory) and \
-            (self.file_type_filter == other.file_type_filter) and \
-            (self.variables == other.variables):
+                (self.input_directories == other.input_directories) and \
+                (self.output_directory == other.output_directory) and \
+                (self.file_type_filter == other.file_type_filter) and \
+                (self.variables == other.variables):
             return True
         return False
-
 
     # gives unique pattern name. Is currently ugly as sin, possibly come back
     # to this and improve

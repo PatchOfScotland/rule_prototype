@@ -1,4 +1,3 @@
-import os
 import time
 from debugging import *
 from pycsp.parallel import *
@@ -38,6 +37,3 @@ def event_monitor(to_server_stdin, directory_to_monitor):
             time.sleep(1)
         except KeyboardInterrupt:
             pass
-
-
-

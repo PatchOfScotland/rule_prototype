@@ -1,5 +1,6 @@
 import system_variables
 
+
 def full_debug(message):
     if system_variables.debug_mode == system_variables.FULL:
         debug(message)

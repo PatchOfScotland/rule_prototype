@@ -3,10 +3,10 @@ from debugging import *
 
 
 class Task:
-    def __init__(self, pattern, recipe, file):
+    def __init__(self, pattern, recipe, task_file):
         self.pattern = pattern
         self.recipe = recipe
-        self.file = file
+        self.file = task_file
         full_debug('New Task Created')
         full_debug('pattern: ' + str(self.pattern))
         full_debug('recipe: ' + str(self.recipe))

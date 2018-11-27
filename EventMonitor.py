@@ -131,8 +131,9 @@ class EventMonitor(PatternMatchingEventHandler):
                     input_directories.append(system_variables.data_path +
                                              input_directory)
 
-                output_directory = system_variables.data_path + \
-                                   pattern_dictionary['output_directory']
+                output_directory = \
+                    system_variables.data_path + \
+                    pattern_dictionary['output_directory']
 
                 file_type_filters = []
                 for file_type_filter in pattern_dictionary['type_filter']:
