@@ -1,6 +1,6 @@
 from watchdog.events import PatternMatchingEventHandler
 from prototype.global_methods.global_methods import recursive_search_to_list
-from prototype.structs.Event import *
+from prototype.structs.EdssEvent import *
 from prototype.global_methods.debugging import *
 from prototype.structs.Recipe import Recipe
 from prototype.structs.Pattern import Pattern
@@ -249,6 +249,20 @@ class EventMonitor(PatternMatchingEventHandler):
                         self.to_server_stdin(task)
         else:
             full_debug("ignoring event")
+
+    def on_moved(self, event):
+        """Handle modified rule file"""
+        partial_debug("Moved " + str(event))
+        edss_event = get_event(
+            event
+        )
+        self.process_event(edss_event)
+
+    # This method probably isn't needed as any file changes should be covered
+    # by the other functions. Keep this around just in case though
+#     def on_any_event(self, event):
+#         """Handle modified rule file"""
+#         partial_debug("Any Event " + str(event))
 
     def on_modified(self, event):
         """Handle modified rule file"""
