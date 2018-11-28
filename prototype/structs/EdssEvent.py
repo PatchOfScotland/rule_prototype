@@ -1,4 +1,3 @@
-import os
 from prototype.variables.system_variables import *
 from prototype.global_methods.debugging import *
 

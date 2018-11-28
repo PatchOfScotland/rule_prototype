@@ -8,13 +8,15 @@ class Pattern:
             input_directories,
             output_directory,
             file_type_filter,
-            variables
+            variables,
+            path
     ):
         self.recipes = recipes
         self.variables = variables
         self.input_directories = input_directories
         self.output_directory = output_directory
         self.file_type_filter = file_type_filter
+        self.path = path
         full_debug('Creating new pattern')
         full_debug('Input directories:' + str(self.input_directories))
         full_debug('Output directory:' + str(self.output_directory))

@@ -10,7 +10,7 @@ class Task:
         full_debug('New Task Created')
         full_debug('pattern: ' + str(self.pattern))
         full_debug('recipe: ' + str(self.recipe))
-        full_debug('file: ' + str(self.recipe))
+        full_debug('file: ' + str(self.file))
 
     def create_process(self):
         process = Process(self.recipe, self.pattern, self.file)

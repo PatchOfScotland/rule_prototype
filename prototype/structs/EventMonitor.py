@@ -5,6 +5,7 @@ from prototype.global_methods.debugging import *
 from prototype.structs.Recipe import Recipe
 from prototype.structs.Pattern import Pattern
 from prototype.structs.Task import Task
+from prototype.structs.Deschedule import Deschedule
 from prototype.variables import system_variables
 import ast
 
@@ -29,6 +30,49 @@ class EventMonitor(PatternMatchingEventHandler):
             ignore_directories,
             case_sensitive
         )
+
+    def process_delete_event(self, edss_event):
+        full_debug('file name: ' + edss_event.file_name)
+        if edss_event is not None and edss_event.file_name[1] != '.':
+            partial_debug("file: " + edss_event.file_name)
+            partial_debug("intermediates: " +
+                          edss_event.intermediate_directories)
+            partial_debug("edss: " + edss_event.edss_event_type)
+            partial_debug("system: " + edss_event.system_event_type)
+            partial_debug("path: " + edss_event.path)
+
+            # recipe deleted
+            if edss_event.edss_event_type == recipe_directory:
+                deschedule = Deschedule(edss_event)
+                self.to_server_stdin(deschedule)
+
+                # delete the recipe, if it exists
+                removable_recipe = None
+                for recipe in self.all_recipes:
+                    if recipe.name == \
+                            edss_event.intermediate_directories + \
+                            edss_event.file_name:
+                        removable_recipe = recipe
+                if removable_recipe is not None:
+                    self.all_recipes.remove(removable_recipe)
+
+            # patterns deleted
+            if edss_event.edss_event_type == pattern_directory:
+                deschedule = Deschedule(edss_event)
+                self.to_server_stdin(deschedule)
+
+                # delete the recipe, if it exists
+                removable_pattern = None
+                for pattern in self.all_patterns:
+                    if pattern.path == edss_event.path:
+                        removable_pattern = pattern
+                if removable_pattern is not None:
+                    self.all_patterns.remove(removable_pattern)
+
+            # data deleted
+            if edss_event.edss_event_type == data_directory:
+                deschedule = Deschedule(edss_event)
+                self.to_server_stdin(deschedule)
 
     def process_event(self, edss_event):
         full_debug('file name: ' + edss_event.file_name)
@@ -146,57 +190,54 @@ class EventMonitor(PatternMatchingEventHandler):
                     input_directories,
                     output_directory,
                     file_type_filters,
-                    recipe_variables)
+                    recipe_variables,
+                    edss_event.path)
 
                 # check we don't have a duplicate pattern. If we do then we can
-                # ignore this new one. Note that patterns cannot match the same
-                # directories to the same recipe as this is just duplication
-                matching_pattern = False
-                for defined_pattern in self.all_patterns:
-                    if defined_pattern == pattern:
-                        matching_pattern = True
-                if matching_pattern:
-                    partial_debug("Pattern already exists, ignoring this one")
-                else:
-                    self.all_patterns.append(pattern)
+                # ignore this new one. Patterns are deemed to be unique
+                # according to location
+                removable_pattern = None
+                for established_pattern in self.all_patterns:
+                    if pattern.path == established_pattern.path:
+                        removable_pattern = established_pattern
+                if removable_pattern is not None:
+                    self.all_patterns.remove(removable_pattern)
+                self.all_patterns.append(pattern)
 
-                    full_debug("There are " + str(len(self.all_patterns)) +
-                               " patterns")
+                # check to see if we've got all the necessary recipes
+                complete_recipe = ''
+                complete_name = ''
+                got_all_recipies = True
+                for pattern_recipe in pattern.recipes:
+                    got_this_recipe = False
+                    for recipe in self.all_recipes:
+                        if recipe.name == pattern_recipe:
+                            complete_recipe += recipe.recipe
+                            complete_name += recipe.name + '_'
+                            got_this_recipe = True
+                    if not got_this_recipe:
+                        got_all_recipies = False
 
-                    # check to see if we've got all the necessary recipes
-                    complete_recipe = ''
-                    complete_name = ''
-                    got_all_recipies = True
-                    for pattern_recipe in pattern.recipes:
-                        got_this_recipe = False
-                        for recipe in self.all_recipes:
-                            if recipe.name == pattern_recipe:
-                                complete_recipe += recipe.recipe
-                                complete_name += recipe.name + '_'
-                                got_this_recipe = True
-                        if not got_this_recipe:
-                            got_all_recipies = False
-
-                    # if we've got the recipes then check for pre-existing data
-                    # files
-                    if complete_recipe != '' and got_all_recipies:
-                        initial_data = []
-                        for input_directory in pattern.input_directories:
-                            recursive_search_to_list(
-                                input_directory,
-                                initial_data
-                            )
-                        for data in initial_data:
-                            completed_recipe = Recipe(
-                                complete_name[:-1],
-                                complete_recipe
-                            )
-                            task = Task(
-                                pattern,
-                                completed_recipe,
-                                data
-                            )
-                            self.to_server_stdin(task)
+                # if we've got the recipes then check for pre-existing
+                # data files
+                if complete_recipe != '' and got_all_recipies:
+                    initial_data = []
+                    for input_directory in pattern.input_directories:
+                        recursive_search_to_list(
+                            input_directory,
+                            initial_data
+                        )
+                    for data in initial_data:
+                        completed_recipe = Recipe(
+                            complete_name[:-1],
+                            complete_recipe
+                        )
+                        task = Task(
+                            pattern,
+                            completed_recipe,
+                            data
+                        )
+                        self.to_server_stdin(task)
 
             # new data detected
             if edss_event.edss_event_type == data_directory:
@@ -292,3 +333,5 @@ class EventMonitor(PatternMatchingEventHandler):
                           edss_event.intermediate_directories)
             partial_debug("edss: " + edss_event.edss_event_type)
             partial_debug("system: " + edss_event.system_event_type)
+
+        self.process_delete_event(edss_event)
