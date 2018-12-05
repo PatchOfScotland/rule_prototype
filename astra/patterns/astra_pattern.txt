@@ -1,0 +1,20 @@
+{
+	'input_directories': 
+	[
+		'/astra_test'
+	], 
+	'recipes': 
+	[
+		'astra_test_recipe' 
+	], 
+	'variables': 
+	{
+
+	},
+	'type_filter': 
+	[
+		'.mat'
+	], 
+	'output_directory': 
+		'/test_output'
+}

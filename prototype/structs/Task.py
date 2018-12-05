@@ -16,7 +16,12 @@ class Task:
         process = Process(self.recipe, self.pattern, self.file)
         return process
 
-    # returns task identifier. This can be improved as currently it is super
-    # crude, but hey, at least its unique
-    def get_task_name(self):
-        return str(self.file) + str(self.recipe) + str(self.pattern)
+    def __eq__(self, other_task):
+        if not isinstance(other_task, Task):
+            return False
+
+        if (self.file == other_task.file) and \
+                (self.recipe.recipe == other_task.recipe.recipe) and \
+                (self.pattern == other_task.pattern):
+            return True
+        return False

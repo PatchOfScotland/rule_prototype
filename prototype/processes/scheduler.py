@@ -27,7 +27,7 @@ def scheduler(from_server_stdin, from_resources, to_resources):
             if isinstance(message, Task):
                 task_match = False
                 for index, buffered in enumerate(scheduler_buffer):
-                    if buffered.get_task_name() == message.get_task_name():
+                    if buffered == message:
                         scheduler_buffer[index] = message
                         partial_debug('old task updated (' +
                                       str(len(scheduler_buffer)) + ')')
@@ -54,8 +54,6 @@ def scheduler(from_server_stdin, from_resources, to_resources):
                         deleting_tasks.append(index)
                     for task in deleting_tasks:
                         scheduler_buffer.remove(task)
-                        
-                    # TODO check the above descheduling is working
 
         # Input message came from a resource looking for a process.
         # Can ignore empty input
